@@ -1,0 +1,1141 @@
+@charset "UTF-8";
+@font-face {
+  font-family: SUIT;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/SUIT-Regular.woff2");
+}
+@font-face {
+  font-family: SUIT;
+  font-style: normal;
+  font-weight: 500;
+  src: url("../font/SUIT-Medium.woff2");
+}
+@font-face {
+  font-family: SUIT;
+  font-style: normal;
+  font-weight: 700;
+  src: url("../font/SUIT-Bold.woff2");
+}
+html {
+  font-family: SUIT, sans-serif;
+  font-size: 62.5%;
+  line-height: 1.5;
+  box-sizing: border-box;
+  letter-spacing: -0.04em;
+  word-break: break-all;
+  color: #212121;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 320px) {
+  html {
+    font-size: 56.25%;
+  }
+}
+/*@media (min-width: 376px) and (max-width: 768px) {
+    html {
+        font-size: 68.75%; //font-size 11px로 지정(아이폰 x 대응)
+    }
+}*/
+body {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: inherit;
+  letter-spacing: inherit;
+  word-break: inherit;
+  color: inherit;
+  background-repeat: inherit;
+}
+
+button {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+dl, ul, ol, li {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+address, caption, cite, code, dfn, em, var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+*[role=button] {
+  cursor: pointer;
+}
+
+input, .datepicker, textarea, select, *[role=button] {
+  width: 100%;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+input:disabled, .datepicker:disabled, textarea:disabled, select:disabled, *[role=button]:disabled {
+  opacity: 1;
+}
+
+label, textarea {
+  display: block;
+}
+
+input[type=checkbox], [type=checkbox].datepicker, input[type=radio], [type=radio].datepicker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  border: 0;
+  cursor: pointer;
+}
+.checkbox label, .radio label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+input[type=search]::-webkit-search-cancel-button, [type=search].datepicker::-webkit-search-cancel-button {
+  display: none;
+}
+input[type=number], [type=number].datepicker {
+  -moz-appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button, [type=number].datepicker::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button, [type=number].datepicker::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+input::-ms-clear, .datepicker::-ms-clear {
+  display: none;
+}
+
+textarea {
+  resize: none;
+}
+
+fieldset {
+  border: 0;
+}
+
+::selection {
+  background-color: #0164FF;
+}
+
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.pc_only {
+  display: block;
+}
+@media (max-width: 767px) {
+  .pc_only {
+    display: none;
+  }
+}
+
+.mo_only {
+  display: none;
+}
+@media (max-width: 767px) {
+  .mo_only {
+    display: block;
+  }
+}
+
+.scroll-prevent {
+  overflow: hidden;
+  height: 100vh;
+}
+
+i {
+  display: inline-block;
+}
+
+button i {
+  margin-left: 0.666666em;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-top;
+}
+
+.btn.login {
+  margin-top: 0.8rem;
+  height: 5.4rem;
+}
+
+.line_btn {
+  color: #0164FF;
+  text-decoration: underline;
+}
+.line_btn:active {
+  text-decoration: none;
+}
+.line_btn i {
+  width: 0.666666em;
+  height: 0.666666em;
+}
+
+.btn {
+  display: block;
+  padding: 0 1.2rem;
+  height: 4rem;
+  border: 1px solid transparent;
+  border-radius: 10rem;
+  background-color: #0164FF;
+  font-size: 1.5rem;
+  color: #fff;
+  word-break: keep-all;
+  line-height: 1.2;
+}
+.btn:active {
+  background-color: #005ae7;
+}
+.btn:disabled {
+  border-color: rgba(33, 33, 33, 0.3);
+  background-color: rgba(33, 33, 33, 0.3);
+  color: #fff;
+  cursor: default;
+}
+.bo.btn {
+  border-color: #0164FF;
+  background-color: #fff;
+  color: #0164FF;
+}
+.bo.btn:active {
+  background-color: #f2f2f2;
+}
+.bo.btn:disabled {
+  border-color: rgba(33, 33, 33, 0.3);
+  background-color: rgba(33, 33, 33, 0.18);
+  color: rgba(33, 33, 33, 0.3);
+}
+.bo.grey.btn {
+  border-color: rgba(33, 33, 33, 0.3);
+  color: rgba(33, 33, 33, 0.6);
+}
+.round.btn {
+  border-radius: 4rem;
+}
+
+.logo {
+  position: relative;
+  background-image: url("../img/logo_header.svg");
+  background-size: 100% auto;
+}
+.logo > * {
+  display: block;
+  padding-top: 28%;
+}
+
+.form_wrap {
+  margin: 2rem 0;
+  padding: 0 3rem;
+}
+.form_li {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.form_li > * {
+  flex: 0 0 auto;
+}
+.form_li .form_in {
+  flex: 1 1 auto;
+}
+.form_li:last-child {
+  margin-bottom: 0;
+}
+.form_li input, .form_li .datepicker {
+  height: 6rem;
+}
+@media (max-width: 767px) {
+  .form_li input, .form_li .datepicker {
+    height: 4.8rem;
+  }
+}
+.nowrap {
+  flex-wrap: nowrap;
+}
+.nowrap .form_ttl {
+  margin-bottom: 0;
+  width: 10rem;
+  min-height: 6rem;
+}
+@media (max-width: 767px) {
+  .nowrap .form_ttl {
+    min-height: 4.8rem;
+  }
+}
+
+.form_ttl {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  width: 100%;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+@media (max-width: 767px) {
+  .form_ttl {
+    font-size: 1.4rem;
+  }
+}
+.form_ttl small {
+  color: rgba(33, 33, 33, 0.3);
+}
+.form_ttl b {
+  flex: 1;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0164FF;
+  text-align: right;
+}
+.form_attach_txt {
+  flex: 1;
+  font-size: 1.2rem;
+  color: #0164FF;
+  text-align: right;
+}
+.form_in {
+  width: 100%;
+  min-height: 6rem;
+}
+@media (max-width: 767px) {
+  .form_in {
+    min-height: 4.8rem;
+  }
+}
+.form_in > * {
+  margin-top: 0.4rem;
+}
+.form_in > *:first-child {
+  margin-top: 0;
+}
+.form_in .select {
+  width: 100%;
+}
+.form_in .select::before {
+  right: 1em;
+  background-size: 1.333333em;
+}
+@media (max-width: 767px) {
+  .form_in .select::before {
+    right: 0.6em;
+    background-size: 1em;
+  }
+}
+.form .inline {
+  display: flex;
+  align-items: center;
+  min-height: 6rem;
+}
+@media (max-width: 767px) {
+  .form .inline {
+    min-height: 4.8rem;
+  }
+}
+.form .inline > * {
+  flex: 1 1 auto;
+}
+.form .inline .btn {
+  flex: 0 0 auto;
+}
+.form .inline > * {
+  margin-right: 0.8rem;
+}
+.form .inline > *:last-child {
+  margin-right: 0;
+}
+.form .inline .btn {
+  width: auto;
+  min-width: 25%;
+}
+.form .btn {
+  height: 6rem;
+}
+@media (max-width: 767px) {
+  .form .btn {
+    height: 4.8rem;
+  }
+}
+
+/*바인딩*/
+.bind {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  min-height: 4rem;
+  font-weight: 700;
+}
+
+.hint {
+  padding: 0.8em 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgba(33, 33, 33, 0.3);
+  word-break: keep-all;
+}
+.hint em {
+  color: #0164FF;
+}
+.hint .line_btn {
+  display: inline-block;
+  width: auto;
+  margin: 0 0.3em;
+}
+.hint .line_btn i {
+  margin-left: 0.2em;
+  vertical-align: middle;
+  transform: rotate(0);
+}
+.hint .line_btn.on i {
+  transform: rotate(180deg);
+}
+
+/*유효성문구*/
+.valid {
+  display: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #F02E19;
+}
+.valid.on {
+  display: flex;
+}
+.valid i {
+  flex: 0 0 auto;
+  margin: 0.083333em 0.4rem 0.083333em 0;
+  width: 1.333333em;
+  height: 1.333333em;
+  vertical-align: text-top;
+}
+
+textarea, input, .datepicker {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  border: 1px solid rgba(33, 33, 33, 0.3);
+  border-radius: 1rem;
+  background-color: #fff;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+textarea::placeholder, input::placeholder, .datepicker::placeholder {
+  font-weight: 400;
+  color: rgba(33, 33, 33, 0.3);
+}
+textarea:focus, input:focus, .datepicker:focus {
+  border: 2px solid #0164FF;
+  outline: none;
+}
+textarea:disabled, input:disabled, .datepicker:disabled {
+  color: rgba(33, 33, 33, 0.3);
+  background-color: rgba(33, 33, 33, 0.18);
+}
+
+input, .datepicker {
+  padding: 0 1em;
+  min-height: 4rem;
+}
+
+textarea {
+  padding: 0.8em 1em;
+  height: 22.8rem;
+  white-space: pre-line;
+}
+
+/*데이트피커*/
+.datepicker {
+  text-align: left;
+}
+
+/*시간카운트*/
+.time_count {
+  position: relative;
+}
+.time_count input, .time_count .datepicker {
+  padding-right: 5.2rem;
+}
+.time_count .time {
+  display: none;
+  position: absolute;
+  transform: translate(0, -50%);
+  top: 50%;
+  right: 1rem;
+  min-width: 3.2rem;
+  text-align: center;
+  font-weight: 500;
+  color: #0164FF;
+}
+.time_count .time.on {
+  display: block;
+}
+
+/*검색*/
+.search {
+  position: relative;
+}
+.search input, .search .datepicker {
+  padding-right: 4.4rem;
+}
+.search i {
+  position: absolute;
+  transform: translate(0, -50%);
+  top: 50%;
+  right: 1rem;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.checkbox, .radio {
+  font-size: 1.4rem;
+}
+.checkbox input, .checkbox .datepicker, .radio input, .radio .datepicker {
+  width: 1.5em;
+  height: 1.5em;
+  min-height: unset;
+  padding: 0;
+  background-size: contain;
+}
+.checkbox input:checked, .checkbox .datepicker:checked, .radio input:checked, .radio .datepicker:checked {
+  border: 0;
+}
+.checkbox input:checked + *, .checkbox .datepicker:checked + *, .radio input:checked + *, .radio .datepicker:checked + * {
+  font-weight: 700;
+  color: #0164FF;
+}
+.checkbox label, .radio label {
+  line-height: 1.2;
+  padding: 0.15em 0 0.15em 1.8em;
+}
+.checkbox.right, .radio.right {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.checkbox.right input, .checkbox.right .datepicker, .radio.right input, .radio.right .datepicker {
+  position: absolute;
+  top: 0;
+  left: unset;
+  right: 0;
+}
+.checkbox.right label, .radio.right label {
+  position: relative;
+  padding-left: 0;
+  padding-right: 2.1em;
+}
+
+.toggle {
+  position: relative;
+  width: 7.2rem;
+  height: 3rem;
+  border-radius: 3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.toggle input, .toggle .datepicker {
+  height: 100%;
+}
+.toggle input + span, .toggle .datepicker + span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background-color: rgba(33, 33, 33, 0.18);
+  color: rgba(33, 33, 33, 0.6);
+  transition: background-color 0.2s;
+}
+.toggle input + span::after, .toggle .datepicker + span::after {
+  position: absolute;
+  top: 50%;
+  left: 14%;
+  transform: translate(0, -50%);
+  content: "OFF";
+  width: max-content;
+  transition: 0.2s;
+}
+.toggle input:checked + span, .toggle .datepicker:checked + span {
+  color: #fff;
+  transition: background-color 0.2s;
+}
+.toggle input:checked + span::after, .toggle .datepicker:checked + span::after {
+  left: 86%;
+  transform: translate(-100%, -50%);
+  content: "ON";
+  transition: 0.2s;
+}
+
+.select {
+  position: relative;
+  height: 4.8rem;
+  border-radius: 1rem;
+  background-color: #fff;
+}
+.select.default {
+  box-shadow: inset 0 0 0 2px #0164FF;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.select.default input, .select.default .datepicker {
+  padding: 0 1rem;
+}
+.select.default.on ul {
+  box-shadow: inset 0 0 0 2px #0164FF;
+}
+.select.in-form {
+  height: 6rem;
+  box-shadow: inset 0 0 0 1px rgba(33, 33, 33, 0.18);
+}
+@media (max-width: 767px) {
+  .select.in-form {
+    height: 4.8rem;
+  }
+}
+.select.in-form.on ul {
+  padding-top: 7rem;
+  box-shadow: inset 0 0 0 2px #0164FF;
+}
+@media (max-width: 767px) {
+  .select.in-form.on ul {
+    padding-top: 5.8rem;
+  }
+}
+.select.head {
+  height: 4rem;
+  border-radius: 4rem;
+  box-shadow: none;
+  background-color: #0164FF;
+  font-weight: 700;
+  color: #fff;
+}
+.select.head.on {
+  border-radius: 2rem;
+}
+.select.head::before {
+  right: 0.4rem;
+}
+.select.head input, .select.head .datepicker {
+  padding: 0 1.4rem;
+}
+.select.head.on input, .select.head.on .datepicker {
+  border-color: #0164FF;
+  mix-blend-mode: hard-light;
+}
+.select.head.on ul {
+  padding-top: 5rem;
+}
+.select.head li {
+  height: 4rem;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+}
+.select::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.8em;
+  height: inherit;
+  background-size: 0.8em;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.select.on::before {
+  z-index: 3;
+  transform: rotate(180deg);
+}
+.select input, .select .datepicker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  font-size: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+}
+.select.on input, .select.on .datepicker {
+  z-index: 2;
+  border-bottom: 1px solid #0164FF;
+  mix-blend-mode: darken;
+}
+.select ul {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: inherit;
+  opacity: 0;
+  overflow: hidden;
+}
+.select.on ul {
+  z-index: 1;
+  height: auto;
+  padding: 5.8rem 1rem 1rem;
+  border-radius: inherit;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+.select li {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  height: 4.8rem;
+  cursor: pointer;
+}
+.select li:active {
+  background-color: #0164FF;
+  color: #0164FF;
+}
+
+.thumb {
+  position: relative;
+}
+.thumb__inner {
+  position: relative;
+  padding-top: 100%;
+}
+.thumb img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: #fff;
+  object-fit: cover;
+}
+
+.prof {
+  position: relative;
+}
+.prof__inner {
+  position: relative;
+  padding-top: 100%;
+  border-radius: 50%;
+  background-image: url("../img/df_profile.svg");
+  background-size: contain;
+  overflow: hidden;
+}
+.prof__inner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: #fff;
+  object-fit: cover;
+}
+
+.nickname {
+  display: flex;
+}
+.nickname .prof {
+  margin-right: 0.363636em;
+}
+
+.modal_wrap {
+  transition-property: top;
+  transition-duration: 0.5s;
+  transition-delay: 0.2s;
+  z-index: 40;
+  position: fixed;
+  top: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.modal_wrap::before {
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-delay: 0s;
+  content: "";
+  display: block;
+  height: 100%;
+  background-color: rgba(224, 224, 224, 0.6);
+  opacity: 0;
+}
+.modal__inner {
+  transition-property: top;
+  transition-duration: 0.2s;
+  transition-delay: 0s;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_wrap.on {
+  transition-property: top;
+  transition-duration: 0.2s;
+  transition-delay: 0s;
+  top: 0;
+}
+.modal_wrap.on::before {
+  transition-property: opacity;
+  transition-duration: 0.3s;
+  transition-delay: 0.2s;
+  opacity: 1;
+}
+.modal_wrap.on .modal__inner {
+  transition-property: top;
+  transition-duration: 0.3s;
+  transition-delay: 0.2s;
+  top: 0;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  margin: 0 25%;
+  width: 100%;
+  max-height: 70%;
+  border-radius: 3rem;
+  background-color: #fff;
+  overflow: auto;
+}
+.modal > * {
+  flex: 0 0 auto;
+}
+.modal__con {
+  flex: 1 1 auto;
+}
+.modal .form_wrap {
+  margin: 0;
+  padding: 0 3rem 3rem;
+}
+@media (max-width: 767px) {
+  .modal .form_wrap {
+    padding: 0 2rem 2rem;
+  }
+}
+@media (max-width: 767px) {
+  .modal {
+    margin: 0;
+    height: 100%;
+    max-height: unset;
+    border-radius: 0;
+  }
+}
+.modal__head {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal__head > * {
+  padding: 1rem 1.6rem;
+}
+.modal__head .h1 {
+  display: flex;
+  align-items: center;
+  min-height: 6rem;
+  font-weight: 700;
+}
+@media (max-width: 767px) {
+  .modal__head .h1 {
+    min-height: 4rem;
+  }
+}
+.modal__con {
+  overflow-y: auto;
+}
+.modal__txt {
+  display: table;
+  width: 100%;
+  padding: 0 3rem;
+}
+@media (max-width: 767px) {
+  .modal__txt {
+    padding: 0 2rem;
+  }
+}
+.modal__txt > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+.modal__txt .center {
+  text-align: center;
+}
+.modal__btn {
+  padding: 0 3rem 3rem;
+}
+@media (max-width: 767px) {
+  .modal__btn {
+    padding: 0 2rem 2rem;
+  }
+}
+.modal__btn .btn_wrap {
+  display: flex;
+  justify-content: center;
+}
+.modal__btn .btn {
+  margin-right: 0.8rem;
+}
+.modal__btn .btn:first-child {
+  min-width: 9.6rem;
+  width: 40%;
+}
+.modal__btn .btn:last-child {
+  margin-right: 0;
+  width: 100%;
+}
+.modal .close_btn {
+  position: absolute;
+  transform: translate(0, -50%);
+  top: 50%;
+  right: 1.5rem;
+  width: auto;
+}
+@media (max-width: 767px) {
+  .modal .close_btn {
+    right: 0.5em;
+  }
+}
+.modal .close_btn i {
+  width: 3em;
+  height: 3em;
+  margin-left: 0;
+}
+.i_x::after {
+  background-image: url("../img/i_x.svg");
+  background-size: 55.555555%;
+  background-position: center;
+}
+
+.system .modal__btn .btn {
+  margin-right: 0;
+  height: 3rem;
+  border: 0;
+  background-color: #fff;
+  color: #0164FF;
+}
+.system .modal__btn .btn:active {
+  background-color: #f2f2f2;
+}
+.system .modal__btn .btn:first-child {
+  width: 100%;
+}
+
+.full_modal {
+  /*전체*/
+}
+.full_modal .modal {
+  margin: 0;
+  max-width: unset;
+  height: 100%;
+  max-height: unset;
+  border-radius: 0;
+}
+.full_modal .modal .btm_btn .btn_wrap {
+  position: absolute;
+}
+
+.bottom_modal {
+  /*하단모달*/
+}
+.bottom_modal .modal {
+  margin: 0;
+  max-width: unset;
+  border-radius: 3rem 3rem 0 0;
+}
+.bottom_modal .modal__inner {
+  align-items: flex-end;
+}
+
+.terms {
+  display: none;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: rgba(33, 33, 33, 0.6);
+}
+@media (max-width: 767px) {
+  .terms {
+    font-size: 1.2rem;
+  }
+}
+.terms.on {
+  display: block;
+}
+.terms__inner {
+  padding: 1.6rem;
+  border-radius: 1rem;
+  background-color: rgba(33, 33, 33, 0.18);
+}
+.terms__inner > * + * {
+  margin-top: 0.5em;
+}
+.terms table {
+  width: 100%;
+}
+.terms th, .terms td {
+  height: 4.8rem;
+  padding: 0 1em;
+  border: 1px solid rgba(33, 33, 33, 0.3);
+  background-color: #fff;
+}
+.terms th {
+  border: 1px solid rgba(33, 33, 33, 0.3);
+  background-color: rgba(33, 33, 33, 0.18);
+}
+
+.header {
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 240px;
+  height: 6rem;
+  padding: 0 3rem;
+  background-color: white;
+  border-bottom: 1px solid rgba(33, 33, 33, 0.18);
+}
+.header__menu {
+  display: flex;
+  align-items: center;
+}
+.header__menu button {
+  margin-left: 0.8rem;
+  padding: 0.8rem;
+  padding-right: 0;
+  width: auto;
+  color: rgba(33, 33, 33, 0.6);
+}
+.header__menu button:hover {
+  color: #0164FF;
+  font-weight: 700;
+}
+.header .logo {
+  width: 7.2rem;
+}
+
+.nav {
+  position: fixed;
+  top: 6rem;
+  left: 0;
+  right: unset;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 0;
+  width: 17.4rem;
+  background: #212121;
+  overflow: auto;
+}
+.nav button {
+  padding: 1.2rem 0 1.2rem 2.6rem;
+  border-left: 0.4rem solid transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.7rem;
+  text-align: left;
+}
+.nav button.on {
+  border-color: #0164FF;
+  color: white;
+  background: rgba(255, 255, 255, 0.16);
+}
+.nav button:hover {
+  color: white;
+}
+
+.footer {
+  padding: 2rem;
+  padding-bottom: 0;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.footer dl {
+  display: flex;
+  flex-wrap: wrap;
+}
+.footer dt {
+  padding-right: 0.5em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.main {
+  min-width: 240px;
+}
+.main__top {
+  background: #F8F8F8;
+}
+/*----------유튜브--------------------------------------------------------------------------------*/
+.video-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+.video-wrap iframe,
+.video-wrap object,
+.video-wrap embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*# sourceMappingURL=main.css.map */

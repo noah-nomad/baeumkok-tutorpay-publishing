@@ -5,15 +5,15 @@
 
 //font load
 //개발에 넘길 때, 웹폰트 @import 하고 src 부분 주석처리
-$font-name: Spoqa Han Sans Neo;
-$weights: (Thin: 100, Light: 300, Regular: 400, Medium: 500, Bold: 700);
-//@import url("//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"'");
+$font-name: SUIT;
+$weights: (Regular: 400, Medium: 500, Bold: 700);
+//@import url("https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css");
 @each $name, $number in $weights {
     @font-face {
         font-family: $font-name;
         font-style: normal;
         font-weight: $number;
-        src: url("../font/SpoqaHanSansNeo-#{$name}.woff");
+        src: url("../font/SUIT-#{$name}.woff2");
     }
 }
 
@@ -24,7 +24,7 @@ html {
     box-sizing: border-box;
     letter-spacing: -0.04em;
     word-break: break-all;
-    color: $gray-90;
+    color: $dark;
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: 100%; //-webkit-text-size-adjust 디바이스 폰트 사이즈 설정에 영향받지 않도록 함
     background-repeat: no-repeat;
@@ -40,7 +40,8 @@ html {
     }
 }*/
 body {
-    font-size: 16*$unit;
+    font-size: 15*$unit;
+    font-weight: $medium;
 }
 * {
     margin: 0;
@@ -145,19 +146,5 @@ fieldset {
     border: 0;
 }
 ::selection {
-    background-color: $color-primary-light-40;
-}
-
-/*아이콘*/
-i {
-    font-style: normal;
-    
-    &::after {
-        content: "";
-        display: block;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-    }
+    background-color: $color-primary;
 }

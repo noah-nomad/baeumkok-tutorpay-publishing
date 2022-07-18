@@ -1,52 +1,19 @@
 //컬러
-$color-primary-dark-10: #009377;
-$color-primary: #00B28F;
-$color-primary-light-10: #28C99E;
-$color-primary-light-20: #4CD8AE;
-$color-primary-light-30: #9AE2C7;
-$color-primary-light-40: #C4F0E0;
-$color-primary-light-50: #E2F9F0;
-$color-primary-light-60: #F2F9F7;
-$color-secondary-dark-30: #F3A100;
-$color-secondary-dark-20: #FFB800;
-$color-secondary-dark-10: #FFCD1C;
-$color-secondary: #FFDE3D;
-$color-secondary-light-10: #FFE97B;
-$color-secondary-light-20: #FFF0B0;
-$color-secondary-light-30: #FFF5D9;
-$color-secondary-light-40: #FFFAEB;
-$color-accent-dark-10: #395EC6;
-$color-accent: #5873DC;
-$color-accent-light-10: #7391ED;
-$color-accent-light-20: #A0B6EE;
-$color-accent-light-30: #C3D4F8;
-$color-accent-light-40: #D5E2F9;
-$color-accent-light-50: #E6ECF8;
-$color-accent-light-60: #F2F5F9;
-$color-error: #F93F32;
-$color-error-light-10: #FF6A52;
-$color-error-light-20: #FF896D;
-$color-error-light-30: #FFE7E2;
-$green-gray-90: #343b38;
-$green-gray-80: #444e4a;
-$green-gray-70: #55625D;
-$green-gray-60: #667770;
-$green-gray-50: #788780;
-$green-gray-40: #8A9990;
-$green-gray-30: #A9B5AF;
-$green-gray-20: #C1C9C5;
-$green-gray-10: #D7DDDA;
-$green-gray-05: #E8EFEC;
-$gray-90: #212121; //블랙으로 사용
-$gray-80: #424242;
-$gray-70: #616161;
-$gray-60: #757575;
-$gray-50: #9E9E9E;
-$gray-40: #BDBDBD;
-$gray-30: #E0E0E0;
-$gray-20: #EEEEEE;
-$gray-10: #F5F5F5;
-$gray-05: #FAFAFA;
+$color-primary-dark-30: #002267;
+$color-primary: #0045D1;
+$color-primary: #0164FF;
+$color-primary-on-dark: #3383FF;
+$color-promotion: #00D6D6;
+$color-promotion-light-30: #59FFFF;
+$color-error: #F02E19;
+$dark: #212121; //블랙으로 사용
+$dark-60: rgba(33, 33, 33, 0.6);
+$dark-30: rgba(33, 33, 33, 0.3);
+$dark-18: rgba(33, 33, 33, 0.18);
+$dark-05: #F8F8F8; //가장 밝은 배경색
+$light-60: rgba(255, 255, 255, 0.6);
+$light-30: rgba(255, 255, 255, 0.3);
+$light-16: rgba(255, 255, 255, 0.16);
 
 //폰트
 $thin: 100;
@@ -59,5 +26,3 @@ $black: 900;
 
 //기타
 $unit: 0.1rem;
-//$shadow-card: 0 6*$unit 20*$unit rgba(0, 0, 0, 0.12);
-//$border-radius: 4*$unit;

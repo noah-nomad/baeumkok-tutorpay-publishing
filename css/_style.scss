@@ -1,16 +1,5 @@
 @import "common";
 
-%content-area {
-  max-width: 1080px;
-  margin: 0 auto;
-}
-
-@mixin content-area_media {
-  @media (max-width: 1080px) {
-    @content;
-  }
-}
-
 @mixin mobile-area_media {
   @media (max-width: 767px) {
     @content;
@@ -21,7 +10,7 @@
 //
 //::after 사용을 최소화하기 위해 클릭 시 배경색 변경으로 수정
 //@include click_btn_bg(원래 배경색, 어두워지는 정도값, light: 배경색 밝아짐);
-@mixin click-btn_bg($color: #fff, $amount: 2%, $if: null) {
+@mixin click-btn_bg($color: #fff, $amount: 5%, $if: null) {
   @if $if == null {
     &:active {
       background-color: darken($color, $amount);
@@ -31,19 +20,6 @@
       background-color: lighten($color, $amount);
     }
   }
-}
-
-//호버효과
-@mixin hover_effect {
-  @media (hover: hover) {
-    &:hover {
-      @content;
-    }
-  }
-}
-
-/*텍스트 타입*/
-%txt-type {
 }
 
 .blind {
@@ -114,29 +90,22 @@ button {
 
 %btn {
   //기본
-  padding: 0 10*$unit;
-  height: 60*$unit;
-  border: 2px solid $color-primary;
-  border-radius: 60*$unit/6;
+  display: block;
+  padding: 0 12*$unit;
+  height: 40*$unit;
+  border: 1px solid transparent;
+  border-radius: 100*$unit;
   background-color: $color-primary;
   @include click_btn_bg($color-primary); //배경색이랑 같은 값을 파라미터로 넣어주기
   font-size: 15*$unit;
-  font-weight: $bold;
   color: #fff;
   word-break: keep-all;
   line-height: 1.2;
 
-  @include mobile-area_media {
-    height: 48*$unit;
-    border-width: 1px;
-    font-size: 14*$unit;
-    font-weight: $medium;
-  }
-
   //비활성화
   &:disabled {
-    border-color: $gray-40;
-    background-color: $gray-40;
+    border-color: $dark-30;
+    background-color: $dark-30;
     color: #fff;
     cursor: default;
   }
@@ -150,15 +119,15 @@ button {
     color: $color-primary;
 
     &:disabled {
-      border-color: $gray-30;
-      background-color: $gray-10;
-      color: $gray-40;
+      border-color: $dark-30;
+      background-color: $dark-18;
+      color: $dark-30;
     }
 
     //회색
     &.grey {
-      border-color: $gray-40;
-      color: $gray-60;
+      border-color: $dark-30;
+      color: $dark-60;
     }
   }
 
@@ -169,16 +138,12 @@ button {
 
 .logo {
   position: relative;
-  background-image: url("../img/logo_basic.svg");
+  background-image: url("../img/logo_header.svg");
   background-size: 100% auto;
 
   & > * {
     display: block;
-    padding-top: 50%;
-  }
-
-  &.on-primary {
-    background-image: url("../img/logo_onprimary.svg");
+    padding-top: 28%;
   }
 }
 
@@ -248,7 +213,7 @@ $form-box-m-height: 48*$unit;
     }
 
     small {
-      color: $gray-40;
+      color: $dark-30;
     }
 
     b {
@@ -263,7 +228,7 @@ $form-box-m-height: 48*$unit;
   &_attach_txt {
     flex: 1;
     font-size: 12*$unit;
-    color: $color-primary-light-10;
+    color: $color-primary;
     text-align: right;
   }
 
@@ -352,7 +317,7 @@ $form-box-m-height: 48*$unit;
   padding: 0.8em 0;
   font-size: 12*$unit;
   font-weight: $medium;
-  color: $gray-40;
+  color: $dark-30;
   word-break: keep-all;
 
   em {
@@ -378,12 +343,6 @@ $form-box-m-height: 48*$unit;
   }
 }
 
-.i_cv_down {
-  &::after {
-    background-image: url("../img/i_select_a_c_down.svg");
-  }
-}
-
 /*유효성문구*/
 .valid {
   display: none;
@@ -404,15 +363,9 @@ $form-box-m-height: 48*$unit;
   }
 }
 
-.i_valid {
-  &::after {
-    background-image: url("../img/i_warning_ce.svg");
-  }
-}
-
 %input-common {
   @include line();
-  border: 1px solid $gray-30; //인풋 보더
+  border: 1px solid $dark-30; //인풋 보더
   border-radius: $form-box-height/6;
   background-color: #fff;
   font-size: 15*$unit;
@@ -420,7 +373,7 @@ $form-box-m-height: 48*$unit;
 
   &::placeholder {
     font-weight: $regular;
-    color: $gray-40;
+    color: $dark-30;
   }
 
   &:focus {
@@ -429,8 +382,8 @@ $form-box-m-height: 48*$unit;
   }
 
   &:disabled {
-    color: $gray-40;
-    background-color: $gray-10; //비활성화 배경색
+    color: $dark-30;
+    background-color: $dark-18; //비활성화 배경색
   }
 }
 
@@ -500,12 +453,10 @@ textarea {
     height: 1.5em;
     min-height: unset;
     padding: 0;
-    background-image: url("../img/i_ch.svg");
     background-size: contain;
 
     &:checked {
       border: 0;
-      background-image: url("../img/i_ched.svg");
 
       & + * {
         font-weight: $bold;
@@ -535,34 +486,10 @@ textarea {
     }
   }
 }
-
-.btn-like {
-  position: relative;
-  width: 24em;
-  height: 24em;
-
-  input {
-    min-height: unset;
-    height: 100%;
-    background-image: url("../img/i_heart_cs_off.svg");
-    background-size: contain;
-
-    &:focus {
-      border: 0;
-    }
-
-    &:checked {
-      background-image: url("../img/i_heart_cs_on.svg");
-    }
-  }
-}
-
 .radio {
   input {
-    background-image: url("../img/i_rd.svg");
 
     &:checked {
-      background-image: url("../img/i_rded.svg");
     }
   }
 }
@@ -581,8 +508,8 @@ textarea {
     & + span {
       @include position(absolute, 0, 0, 0, 0);
       border-radius: inherit;
-      background-color: $gray-20;
-      color: $gray-50;
+      background-color: $dark-18;
+      color: $dark-60;
 
       &::after {
         @include position(absolute, 50%, 14%);
@@ -617,7 +544,7 @@ textarea {
   background-color: #fff;
 
   &.default {
-    box-shadow: inset 0 0 0 2px $color-primary-light-20;
+    box-shadow: inset 0 0 0 2px $color-primary;
     font-size: 20*$unit;
     font-weight: $medium;
 
@@ -632,7 +559,7 @@ textarea {
 
   &.in-form {
     height: 60*$unit;
-    box-shadow: inset 0 0 0 1px $gray-20;
+    box-shadow: inset 0 0 0 1px $dark-18;
 
     @include mobile-area_media {
       height: 48*$unit;
@@ -662,7 +589,6 @@ textarea {
 
     &::before {
       right: 4*$unit;
-      background-image: url("../img/i_select_a_cl_down.svg");
     }
 
     input {
@@ -670,7 +596,7 @@ textarea {
     }
 
     &.on input {
-      border-color: $color-primary-light-10;
+      border-color: $color-primary;
       mix-blend-mode: hard-light;
     }
 
@@ -690,7 +616,6 @@ textarea {
     @include position(absolute, 0, null, 0);
     width: 1.8em;
     height: inherit;
-    background-image: url("../img/i_select_a_c_down.svg");
     background-size: 0.8em;
     background-position: center;
     background-repeat: no-repeat;
@@ -713,7 +638,7 @@ textarea {
 
   &.on input {
     z-index: 2;
-    border-bottom: 1px solid $color-primary-light-40;
+    border-bottom: 1px solid $color-primary;
     mix-blend-mode: darken;
   }
 
@@ -744,8 +669,8 @@ textarea {
     cursor: pointer;
 
     &:active {
-      background-color: $color-primary-light-60;
-      color: $color-primary-dark-10;
+      background-color: $color-primary;
+      color: $color-primary;
     }
   }
 }
@@ -821,7 +746,6 @@ textarea {
       $c: 0s;
       @include transition($a, $b, $c);
       @include position(absolute, 100%, 0, 0);
-      @extend %content-area;
       display: flex;
       height: 100%;
       justify-content: center;
@@ -854,7 +778,6 @@ textarea {
   }
 
   & {
-    @extend %txt-type;
     display: flex;
     flex-direction: column;
     margin: 0 25%;
@@ -994,7 +917,7 @@ textarea {
           border: 0;
           background-color: #fff;
           @include click_btn_bg();
-          color: $color-primary-light-30;
+          color: $color-primary;
 
           &:first-child {
             width: 100%;
@@ -1037,7 +960,7 @@ textarea {
   display: none;
   margin-bottom: 10*$unit;
   font-size: 14*$unit;
-  color: $gray-70;
+  color: $dark-60;
 
   @include mobile-area_media {
     font-size: 12*$unit;
@@ -1050,7 +973,7 @@ textarea {
   &__inner {
     padding: 16*$unit;
     border-radius: 10*$unit;
-    background-color: $gray-10;
+    background-color: $dark-18;
 
     & > * + * {
       margin-top: 0.5em;
@@ -1064,12 +987,12 @@ textarea {
   th, td {
     height: 48*$unit;
     padding: 0 1em;
-    border: 1px solid $gray-30;
+    border: 1px solid $dark-30;
     background-color: #fff;
   }
 
   th {
-    border: 1px solid $gray-40;
-    background-color: $gray-20;
+    border: 1px solid $dark-30;
+    background-color: $dark-18;
   }
 }
