@@ -1,0 +1,1075 @@
+@import "common";
+
+%content-area {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+@mixin content-area_media {
+  @media (max-width: 1080px) {
+    @content;
+  }
+}
+
+@mixin mobile-area_media {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+//클릭효과
+//
+//::after 사용을 최소화하기 위해 클릭 시 배경색 변경으로 수정
+//@include click_btn_bg(원래 배경색, 어두워지는 정도값, light: 배경색 밝아짐);
+@mixin click-btn_bg($color: #fff, $amount: 2%, $if: null) {
+  @if $if == null {
+    &:active {
+      background-color: darken($color, $amount);
+    }
+  } @else {
+    &:active {
+      background-color: lighten($color, $amount);
+    }
+  }
+}
+
+//호버효과
+@mixin hover_effect {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+/*텍스트 타입*/
+%txt-type {
+}
+
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.pc_only {
+  display: block;
+
+  @include mobile-area_media {
+    display: none;
+  }
+}
+
+.mo_only {
+  display: none;
+
+  @include mobile-area_media {
+    display: block;
+  }
+}
+
+.scroll-prevent {
+  overflow: hidden;
+  height: 100vh;
+}
+
+i {
+  display: inline-block;
+}
+
+button {
+  i {
+    margin-left: 0.666666em;
+    width: 20*$unit;
+    height: 20*$unit;
+    vertical-align: text-top;
+  }
+}
+
+.btn {
+  @extend %btn;
+
+  &.login {
+    margin-top: 8*$unit;
+    height: 54*$unit;
+  }
+}
+
+.line_btn {
+  color: $color-primary;
+  text-decoration: underline;
+
+  &:active {
+    text-decoration: none;
+  }
+
+  i {
+    width: 0.666666em;
+    height: 0.666666em;
+  }
+}
+
+%btn {
+  //기본
+  padding: 0 10*$unit;
+  height: 60*$unit;
+  border: 2px solid $color-primary;
+  border-radius: 60*$unit/6;
+  background-color: $color-primary;
+  @include click_btn_bg($color-primary); //배경색이랑 같은 값을 파라미터로 넣어주기
+  font-size: 15*$unit;
+  font-weight: $bold;
+  color: #fff;
+  word-break: keep-all;
+  line-height: 1.2;
+
+  @include mobile-area_media {
+    height: 48*$unit;
+    border-width: 1px;
+    font-size: 14*$unit;
+    font-weight: $medium;
+  }
+
+  //비활성화
+  &:disabled {
+    border-color: $gray-40;
+    background-color: $gray-40;
+    color: #fff;
+    cursor: default;
+  }
+
+  //테두리
+  &.bo {
+    //기본
+    border-color: $color-primary;
+    background-color: #fff;
+    @include click_btn_bg(); //배경색이랑 같은 값을 파라미터로 넣어주기
+    color: $color-primary;
+
+    &:disabled {
+      border-color: $gray-30;
+      background-color: $gray-10;
+      color: $gray-40;
+    }
+
+    //회색
+    &.grey {
+      border-color: $gray-40;
+      color: $gray-60;
+    }
+  }
+
+  &.round {
+    border-radius: 40*$unit;
+  }
+}
+
+.logo {
+  position: relative;
+  background-image: url("../img/logo_basic.svg");
+  background-size: 100% auto;
+
+  & > * {
+    display: block;
+    padding-top: 50%;
+  }
+
+  &.on-primary {
+    background-image: url("../img/logo_onprimary.svg");
+  }
+}
+
+$form-box-height: 60*$unit;
+$form-box-m-height: 48*$unit;
+.form {
+  &_wrap {
+    margin: 20*$unit 0;
+    padding: 0 30*$unit;
+  }
+
+  &_ul {
+  }
+
+  &_li {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20*$unit; //폼 리스트 사이간격
+
+    & > * {
+      flex: 0 0 auto;
+    }
+
+    .form_in {
+      flex: 1 1 auto;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    input {
+      height: $form-box-height;
+
+      @include mobile-area_media {
+        height: $form-box-m-height;
+      }
+    }
+
+    @at-root .nowrap {
+      flex-wrap: nowrap;
+
+      .form {
+        &_ttl {
+          margin-bottom: 0;
+          width: 100*$unit; //타이틀 너비
+          min-height: $form-box-height;
+
+          @include mobile-area_media {
+            min-height: $form-box-m-height;
+          }
+        }
+      }
+    }
+  }
+
+  &_ttl {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8*$unit;
+    width: 100%;
+    font-size: 16*$unit;
+    font-weight: $medium;
+
+    @include mobile-area_media {
+      font-size: 14*$unit;
+    }
+
+    small {
+      color: $gray-40;
+    }
+
+    b {
+      flex: 1;
+      font-size: 12*$unit;
+      font-weight: $bold;
+      color: $color-primary;
+      text-align: right;
+    }
+  }
+
+  &_attach_txt {
+    flex: 1;
+    font-size: 12*$unit;
+    color: $color-primary-light-10;
+    text-align: right;
+  }
+
+  &_in {
+    width: 100%;
+    min-height: $form-box-height;
+
+    @include mobile-area_media {
+      min-height: $form-box-m-height;
+    }
+
+    & > * {
+      margin-top: 4*$unit; //폼 인풋 사이간격
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    .select {
+      width: 100%;
+
+      &::before {
+        right: 1em;
+        background-size: 1.333333em;
+
+        @include mobile-area_media {
+          right: 0.6em;
+          background-size: 1em;
+        }
+      }
+    }
+  }
+
+  .inline {
+    display: flex;
+    align-items: center;
+    min-height: $form-box-height;
+
+    @include mobile-area_media {
+      min-height: $form-box-m-height;
+    }
+
+    & > * {
+      flex: 1 1 auto;
+    }
+
+    .btn {
+      flex: 0 0 auto;
+    }
+
+    & > * {
+      margin-right: 8*$unit;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .btn {
+      width: auto;
+      min-width: 25%; //인풋과 버튼이 나란히 있을 때 버튼의 너비 최소값
+    }
+  }
+
+  .btn {
+    height: $form-box-height;
+
+    @include mobile-area_media {
+      height: $form-box-m-height;
+    }
+  }
+}
+
+/*바인딩*/
+.bind {
+  display: flex;
+  align-items: center;
+  padding: 6*$unit 10*$unit;
+  min-height: 40*$unit;
+  font-weight: $bold;
+}
+
+//힌트문구
+.hint {
+  padding: 0.8em 0;
+  font-size: 12*$unit;
+  font-weight: $medium;
+  color: $gray-40;
+  word-break: keep-all;
+
+  em {
+    color: $color-primary;
+  }
+
+  .line_btn {
+    display: inline-block;
+    width: auto;
+    margin: 0 0.3em;
+
+    i {
+      margin-left: 0.2em;
+      vertical-align: middle;
+      transform: rotate(0);
+    }
+
+    &.on {
+      i {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.i_cv_down {
+  &::after {
+    background-image: url("../img/i_select_a_c_down.svg");
+  }
+}
+
+/*유효성문구*/
+.valid {
+  display: none;
+  font-size: 12*$unit;
+  font-weight: $medium;
+  color: $color-error;
+
+  &.on {
+    display: flex;
+  }
+
+  i {
+    flex: 0 0 auto;
+    margin: 0.083333em 4*$unit 0.083333em 0;
+    width: 1.333333em;
+    height: 1.333333em;
+    vertical-align: text-top;
+  }
+}
+
+.i_valid {
+  &::after {
+    background-image: url("../img/i_warning_ce.svg");
+  }
+}
+
+%input-common {
+  @include line();
+  border: 1px solid $gray-30; //인풋 보더
+  border-radius: $form-box-height/6;
+  background-color: #fff;
+  font-size: 15*$unit;
+  font-weight: $medium;
+
+  &::placeholder {
+    font-weight: $regular;
+    color: $gray-40;
+  }
+
+  &:focus {
+    border: 2px solid $color-primary; //포커스 보더색
+    outline: none;
+  }
+
+  &:disabled {
+    color: $gray-40;
+    background-color: $gray-10; //비활성화 배경색
+  }
+}
+
+input {
+  @extend %input-common;
+  padding: 0 1em; //인풋 내부여백
+  min-height: 40*$unit; //인풋 높이
+}
+
+textarea {
+  @extend %input-common;
+  padding: 0.8em 1em;
+  height: 228*$unit;
+  white-space: pre-line;
+}
+
+/*데이트피커*/
+.datepicker {
+  @extend input;
+  text-align: left;
+}
+
+/*시간카운트*/
+.time_count {
+  position: relative;
+
+  input {
+    padding-right: 52*$unit;
+  }
+
+  .time {
+    display: none;
+    @include position-center(y, absolute);
+    right: 10*$unit;
+    min-width: 32*$unit;
+    text-align: center;
+    font-weight: $medium;
+    color: $color-primary;
+
+    &.on {
+      display: block;
+    }
+  }
+}
+
+/*검색*/
+.search {
+  position: relative;
+
+  input {
+    padding-right: 44*$unit;
+  }
+
+  i {
+    @include position-center(y, absolute);
+    right: 10*$unit;
+    width: 24*$unit;
+    height: 24*$unit;
+  }
+}
+
+.checkbox, .radio {
+  font-size: 14*$unit;
+
+  input {
+    width: 1.5em;
+    height: 1.5em;
+    min-height: unset;
+    padding: 0;
+    background-image: url("../img/i_ch.svg");
+    background-size: contain;
+
+    &:checked {
+      border: 0;
+      background-image: url("../img/i_ched.svg");
+
+      & + * {
+        font-weight: $bold;
+        color: $color-primary;
+      }
+    }
+  }
+
+  label {
+    line-height: 1.2;
+    padding: 0.15em 0 0.15em 1.8em;
+  }
+
+  &.right {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    input {
+      @include position(absolute, 0, unset, 0);
+    }
+
+    label {
+      position: relative;
+      padding-left: 0;
+      padding-right: 2.1em;
+    }
+  }
+}
+
+.btn-like {
+  position: relative;
+  width: 24em;
+  height: 24em;
+
+  input {
+    min-height: unset;
+    height: 100%;
+    background-image: url("../img/i_heart_cs_off.svg");
+    background-size: contain;
+
+    &:focus {
+      border: 0;
+    }
+
+    &:checked {
+      background-image: url("../img/i_heart_cs_on.svg");
+    }
+  }
+}
+
+.radio {
+  input {
+    background-image: url("../img/i_rd.svg");
+
+    &:checked {
+      background-image: url("../img/i_rded.svg");
+    }
+  }
+}
+
+.toggle {
+  position: relative;
+  width: 72*$unit;
+  height: 30*$unit;
+  border-radius: 30*$unit;
+  font-size: 12*$unit;
+  font-weight: $bold;
+
+  input {
+    height: 100%;
+
+    & + span {
+      @include position(absolute, 0, 0, 0, 0);
+      border-radius: inherit;
+      background-color: $gray-20;
+      color: $gray-50;
+
+      &::after {
+        @include position(absolute, 50%, 14%);
+        transform: translate(0, -50%);
+        content: "OFF";
+        width: max-content;
+        transition: 0.2s;
+      }
+
+      transition: background-color 0.2s;
+    }
+
+    &:checked + span {
+      color: #fff;
+
+      &::after {
+        left: 86%;
+        transform: translate(-100%, -50%);
+        content: "ON";
+        transition: 0.2s;
+      }
+
+      transition: background-color 0.2s;
+    }
+  }
+}
+
+.select {
+  position: relative;
+  height: 48*$unit;
+  border-radius: 10*$unit;
+  background-color: #fff;
+
+  &.default {
+    box-shadow: inset 0 0 0 2px $color-primary-light-20;
+    font-size: 20*$unit;
+    font-weight: $medium;
+
+    input {
+      padding: 0 10*$unit;
+    }
+
+    &.on ul {
+      box-shadow: inset 0 0 0 2px $color-primary;
+    }
+  }
+
+  &.in-form {
+    height: 60*$unit;
+    box-shadow: inset 0 0 0 1px $gray-20;
+
+    @include mobile-area_media {
+      height: 48*$unit;
+    }
+
+    &.on ul {
+      padding-top: 70*$unit;
+      box-shadow: inset 0 0 0 2px $color-primary;
+
+      @include mobile-area_media {
+        padding-top: 58*$unit;
+      }
+    }
+  }
+
+  &.head {
+    height: 40*$unit;
+    border-radius: 40*$unit;
+    box-shadow: none;
+    background-color: $color-primary;
+    font-weight: $bold;
+    color: #fff;
+
+    &.on {
+      border-radius: 20*$unit;
+    }
+
+    &::before {
+      right: 4*$unit;
+      background-image: url("../img/i_select_a_cl_down.svg");
+    }
+
+    input {
+      padding: 0 14*$unit;
+    }
+
+    &.on input {
+      border-color: $color-primary-light-10;
+      mix-blend-mode: hard-light;
+    }
+
+    &.on ul {
+      padding-top: 50*$unit;
+    }
+
+    li {
+      height: 40*$unit;
+      padding: 4*$unit;
+      border-radius: 4*$unit;
+    }
+  }
+
+  &::before {
+    content: "";
+    @include position(absolute, 0, null, 0);
+    width: 1.8em;
+    height: inherit;
+    background-image: url("../img/i_select_a_c_down.svg");
+    background-size: 0.8em;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &.on::before {
+    z-index: 3;
+    transform: rotate(180deg);
+  }
+
+  input {
+    @include position(absolute, 0, 0, 0, 0);
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    font-size: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+  }
+
+  &.on input {
+    z-index: 2;
+    border-bottom: 1px solid $color-primary-light-40;
+    mix-blend-mode: darken;
+  }
+
+  ul {
+    z-index: -1;
+    @include position(absolute);
+    width: 100%;
+    height: 1px;
+    background-color: inherit;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  &.on ul {
+    z-index: 1;
+    height: auto;
+    padding: 58*$unit 10*$unit 10*$unit;
+    border-radius: inherit;
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    padding: 10*$unit;
+    height: 48*$unit;
+    cursor: pointer;
+
+    &:active {
+      background-color: $color-primary-light-60;
+      color: $color-primary-dark-10;
+    }
+  }
+}
+
+.thumb {
+  position: relative;
+
+  &__inner {
+    position: relative;
+    padding-top: 100%;
+  }
+
+  img {
+    @include position(absolute, 0, 0, 0);
+    height: 100%; //position 으로 높이 잡아주면 object-fit 이 적용안됨
+    background-color: #fff;
+    object-fit: cover;
+  }
+}
+
+.prof {
+  position: relative;
+
+  &__inner {
+    position: relative;
+    padding-top: 100%;
+    border-radius: 50%;
+    background-image: url("../img/df_profile.svg");
+    background-size: contain;
+    overflow: hidden;
+
+    img {
+      @include position(absolute, 0, 0, 0);
+      height: 100%; //position 으로 높이 잡아주면 object-fit 이 적용안됨
+      background-color: #fff;
+      object-fit: cover;
+    }
+  }
+}
+
+.nickname {
+  display: flex;
+
+  .prof {
+    margin-right: 0.363636em;
+  }
+}
+
+.modal {
+  &_wrap {
+    $a: top;
+    $b: 0.5s;
+    $c: 0.2s;
+    @include transition($a, $b, $c);
+    z-index: 40;
+    @include position(fixed, 100%, 0, 0, 0);
+
+    &::before {
+      $a: opacity;
+      $b: 0.2s;
+      $c: 0s;
+      @include transition($a, $b, $c);
+      content: "";
+      display: block;
+      height: 100%;
+      background-color: rgba(224, 224, 224, 0.6); //딤 색상
+      opacity: 0;
+    }
+
+    @at-root .modal__inner {
+      $a: top;
+      $b: 0.2s;
+      $c: 0s;
+      @include transition($a, $b, $c);
+      @include position(absolute, 100%, 0, 0);
+      @extend %content-area;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &.on {
+      $a: top;
+      $b: 0.2s;
+      $c: 0s;
+      @include transition($a, $b, $c);
+      top: 0;
+
+      &::before {
+        $a: opacity;
+        $b: 0.3s;
+        $c: 0.2s;
+        @include transition($a, $b, $c);
+        opacity: 1;
+      }
+
+      .modal__inner {
+        $a: top;
+        $b: 0.3s;
+        $c: 0.2s;
+        @include transition($a, $b, $c);
+        top: 0;
+      }
+    }
+  }
+
+  & {
+    @extend %txt-type;
+    display: flex;
+    flex-direction: column;
+    margin: 0 25%;
+    width: 100%;
+    max-height: 70%; //모달 최대높이
+    border-radius: 30*$unit;
+    background-color: #fff; //모달 배경색
+    overflow: auto;
+
+    & > * {
+      flex: 0 0 auto;
+    }
+
+    &__con {
+      flex: 1 1 auto;
+    }
+
+    .form_wrap {
+      margin: 0;
+      padding: 0 30*$unit 30*$unit;
+
+      @include mobile-area_media {
+        padding: 0 20*$unit 20*$unit;
+      }
+    }
+
+    @include mobile-area_media {
+      margin: 0;
+      height: 100%;
+      max-height: unset;
+      border-radius: 0;
+    }
+  }
+
+  &__head {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > * {
+      padding: 10*$unit 16*$unit;
+    }
+
+    .h1 {
+      display: flex;
+      align-items: center;
+      min-height: 60*$unit;
+      font-weight: $bold;
+
+      @include mobile-area_media {
+        min-height: 40*$unit;
+      }
+    }
+  }
+
+  &__con {
+    overflow-y: auto;
+  }
+
+  &__txt {
+    display: table;
+    width: 100%;
+    padding: 0 30*$unit;
+
+    @include mobile-area_media {
+      padding: 0 20*$unit;
+    }
+
+    & > * {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .center {
+      text-align: center;
+    }
+  }
+
+  &__btn {
+    padding: 0 30*$unit 30*$unit;
+
+    @include mobile-area_media {
+      padding: 0 20*$unit 20*$unit;
+    }
+
+    .btn_wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn {
+      margin-right: 8*$unit;
+
+      &:first-child {
+        min-width: 96*$unit;
+        width: 40%;
+      }
+
+      &:last-child {
+        margin-right: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .close_btn {
+    @include position-center(y, absolute);
+    right: 15*$unit;
+    width: auto;
+
+    @include mobile-area_media {
+      right: 0.5em;
+    }
+
+    i {
+      width: 3em;
+      height: 3em;
+      margin-left: 0;
+    }
+
+    @at-root .i_x {
+      &::after {
+        background-image: url("../img/i_x.svg");
+        background-size: 55.555555%;
+        background-position: center;
+      }
+    }
+  }
+
+  @at-root .system {
+    .modal {
+      &__btn {
+        .btn {
+          margin-right: 0;
+          height: 30*$unit;
+          border: 0;
+          background-color: #fff;
+          @include click_btn_bg();
+          color: $color-primary-light-30;
+
+          &:first-child {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  @at-root .full_modal {
+    /*전체*/
+    .modal {
+      margin: 0;
+      max-width: unset;
+      height: 100%;
+      max-height: unset;
+      border-radius: 0;
+
+      .btm_btn .btn_wrap {
+        position: absolute;
+      }
+    }
+  }
+
+  @at-root .bottom_modal {
+    /*하단모달*/
+    .modal {
+      margin: 0;
+      max-width: unset;
+      border-radius: 30*$unit 30*$unit 0 0;
+
+      &__inner {
+        align-items: flex-end;
+      }
+    }
+  }
+}
+
+.terms {
+  display: none;
+  margin-bottom: 10*$unit;
+  font-size: 14*$unit;
+  color: $gray-70;
+
+  @include mobile-area_media {
+    font-size: 12*$unit;
+  }
+
+  &.on {
+    display: block;
+  }
+
+  &__inner {
+    padding: 16*$unit;
+    border-radius: 10*$unit;
+    background-color: $gray-10;
+
+    & > * + * {
+      margin-top: 0.5em;
+    }
+  }
+
+  table {
+    width: 100%;
+  }
+
+  th, td {
+    height: 48*$unit;
+    padding: 0 1em;
+    border: 1px solid $gray-30;
+    background-color: #fff;
+  }
+
+  th {
+    border: 1px solid $gray-40;
+    background-color: $gray-20;
+  }
+}

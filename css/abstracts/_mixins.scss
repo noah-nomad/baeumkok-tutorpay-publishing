@@ -1,0 +1,54 @@
+@import "variavles";
+
+//index
+//
+//텍스트 말줄임 처리
+//단축
+//  포지션
+//  트랜지션
+
+//텍스트 말줄임 처리
+//
+//line: 한 줄
+@mixin line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+//lines($number): 여러 줄, 괄호 안에 몇 줄인지 적어주면 됩니다.
+@mixin lines($number) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $number;
+  -webkit-box-orient: vertical;
+}
+
+//포지션
+//
+@mixin position($position, $top: 0, $left: 0, $right: null, $bottom: null) {
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+//중앙정렬 같이 할 때
+@mixin position-center($align, $position, $top: null, $left: null, $right: null, $bottom: null) {
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+  @if $align == xy {transform: translate(-50%, -50%);top: 50%;left: 50%;}
+  @else if $align == x {transform: translate(-50%, 0);left: 50%;}
+  @else if $align == y {transform: translate(0, -50%);top: 50%;}
+}
+
+//트랜지션
+@mixin transition($what, $time, $delay: null) {
+  transition-property: $what;
+  transition-duration: $time;
+  transition-delay: $delay;
+}
