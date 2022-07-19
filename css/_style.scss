@@ -7,18 +7,14 @@
 }
 
 //클릭효과
-//
 //::after 사용을 최소화하기 위해 클릭 시 배경색 변경으로 수정
-//@include click_btn_bg(원래 배경색, 어두워지는 정도값, light: 배경색 밝아짐);
-@mixin click-btn_bg($color: #fff, $amount: 5%, $if: null) {
+@mixin click-btn_bg($color: #fff, $if: null) {
   @if $if == null {
-    &:active {
-      background-color: darken($color, $amount);
-    }
+    &:hover {background-color: darken($color, 2%);}
+    &:active {background-color: darken($color, 5%);}
   } @else {
-    &:active {
-      background-color: lighten($color, $amount);
-    }
+    &:hover {background-color: lighten($color, 2%);}
+    &:active {background-color: lighten($color, 5%);}
   }
 }
 
@@ -59,8 +55,8 @@ i {
 button {
   i {
     margin-left: 0.666666em;
-    width: 20*$unit;
-    height: 20*$unit;
+    width: 1.066666em;
+    height: 1.066666em;
     vertical-align: text-top;
   }
 }
@@ -74,18 +70,13 @@ button {
   }
 }
 
-.line_btn {
+.text_btn {
+  padding: 8*$unit;
+  width: auto;
+  @extend %m12;
   color: $color-primary;
-  text-decoration: underline;
 
-  &:active {
-    text-decoration: none;
-  }
-
-  i {
-    width: 0.666666em;
-    height: 0.666666em;
-  }
+  @include click-btn_bg();
 }
 
 %btn {
@@ -147,8 +138,8 @@ button {
   }
 }
 
-$form-box-height: 60*$unit;
-$form-box-m-height: 48*$unit;
+$form-box-height: 40*$unit;
+$form-box-m-height: 40*$unit;
 .form {
   &_wrap {
     margin: 20*$unit 0;
@@ -365,25 +356,12 @@ $form-box-m-height: 48*$unit;
 
 %input-common {
   @include line();
-  border: 1px solid $dark-30; //인풋 보더
-  border-radius: $form-box-height/6;
-  background-color: #fff;
-  font-size: 15*$unit;
-  font-weight: $medium;
+  border: 1px solid $dark-18; //인풋 보더
+  background-color: white;
 
   &::placeholder {
     font-weight: $regular;
     color: $dark-30;
-  }
-
-  &:focus {
-    border: 2px solid $color-primary; //포커스 보더색
-    outline: none;
-  }
-
-  &:disabled {
-    color: $dark-30;
-    background-color: $dark-18; //비활성화 배경색
   }
 }
 
@@ -403,60 +381,22 @@ textarea {
 /*데이트피커*/
 .datepicker {
   @extend input;
-  text-align: left;
-}
-
-/*시간카운트*/
-.time_count {
-  position: relative;
-
-  input {
-    padding-right: 52*$unit;
-  }
-
-  .time {
-    display: none;
-    @include position-center(y, absolute);
-    right: 10*$unit;
-    min-width: 32*$unit;
-    text-align: center;
-    font-weight: $medium;
-    color: $color-primary;
-
-    &.on {
-      display: block;
-    }
-  }
-}
-
-/*검색*/
-.search {
-  position: relative;
-
-  input {
-    padding-right: 44*$unit;
-  }
-
-  i {
-    @include position-center(y, absolute);
-    right: 10*$unit;
-    width: 24*$unit;
-    height: 24*$unit;
-  }
 }
 
 .checkbox, .radio {
-  font-size: 14*$unit;
+  @extend %m15;
 
   input {
-    width: 1.5em;
-    height: 1.5em;
-    min-height: unset;
     padding: 0;
+    width: 1.333333em;
+    height: 1.33333em;
+    min-height: unset;
+    background: url("../img/i_ch.svg") no-repeat;
     background-size: contain;
 
     &:checked {
       border: 0;
+      background-image: url("../img/i_ched.svg");
 
       & + * {
         font-weight: $bold;
@@ -466,26 +406,10 @@ textarea {
   }
 
   label {
-    line-height: 1.2;
-    padding: 0.15em 0 0.15em 1.8em;
-  }
-
-  &.right {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-
-    input {
-      @include position(absolute, 0, unset, 0);
-    }
-
-    label {
-      position: relative;
-      padding-left: 0;
-      padding-right: 2.1em;
-    }
+    min-height: 1.333333em;
   }
 }
+
 .radio {
   input {
 
@@ -494,505 +418,170 @@ textarea {
   }
 }
 
-.toggle {
-  position: relative;
-  width: 72*$unit;
-  height: 30*$unit;
-  border-radius: 30*$unit;
-  font-size: 12*$unit;
-  font-weight: $bold;
-
-  input {
-    height: 100%;
-
-    & + span {
-      @include position(absolute, 0, 0, 0, 0);
-      border-radius: inherit;
-      background-color: $dark-18;
-      color: $dark-60;
-
-      &::after {
-        @include position(absolute, 50%, 14%);
-        transform: translate(0, -50%);
-        content: "OFF";
-        width: max-content;
-        transition: 0.2s;
-      }
-
-      transition: background-color 0.2s;
-    }
-
-    &:checked + span {
-      color: #fff;
-
-      &::after {
-        left: 86%;
-        transform: translate(-100%, -50%);
-        content: "ON";
-        transition: 0.2s;
-      }
-
-      transition: background-color 0.2s;
-    }
-  }
-}
-
 .select {
   position: relative;
-  height: 48*$unit;
-  border-radius: 10*$unit;
-  background-color: #fff;
+  @include line();
+  padding: 8*$unit 40*$unit 8*$unit 12*$unit;
+  height: 40*$unit;
+  border: 1px solid $dark-18;
+  background: url("../img/i_select_c.svg") no-repeat center right 12*$unit;
+  background-size: 16*$unit;
+  text-align: left;
 
-  &.default {
-    box-shadow: inset 0 0 0 2px $color-primary;
-    font-size: 20*$unit;
-    font-weight: $medium;
+  @include click-btn_bg();
+}
 
-    input {
-      padding: 0 10*$unit;
-    }
+.usertype {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: auto;
+  @extend %m12;
 
-    &.on ul {
-      box-shadow: inset 0 0 0 2px $color-primary;
-    }
-  }
-
-  &.in-form {
-    height: 60*$unit;
-    box-shadow: inset 0 0 0 1px $dark-18;
-
-    @include mobile-area_media {
-      height: 48*$unit;
-    }
-
-    &.on ul {
-      padding-top: 70*$unit;
-      box-shadow: inset 0 0 0 2px $color-primary;
-
-      @include mobile-area_media {
-        padding-top: 58*$unit;
-      }
-    }
-  }
-
-  &.head {
-    height: 40*$unit;
-    border-radius: 40*$unit;
-    box-shadow: none;
-    background-color: $color-primary;
-    font-weight: $bold;
-    color: #fff;
-
-    &.on {
-      border-radius: 20*$unit;
-    }
-
-    &::before {
-      right: 4*$unit;
-    }
-
-    input {
-      padding: 0 14*$unit;
-    }
-
-    &.on input {
-      border-color: $color-primary;
-      mix-blend-mode: hard-light;
-    }
-
-    &.on ul {
-      padding-top: 50*$unit;
-    }
-
-    li {
-      height: 40*$unit;
-      padding: 4*$unit;
-      border-radius: 4*$unit;
-    }
-  }
-
-  &::before {
-    content: "";
-    @include position(absolute, 0, null, 0);
-    width: 1.8em;
-    height: inherit;
-    background-size: 0.8em;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  &.on::before {
-    z-index: 3;
-    transform: rotate(180deg);
-  }
-
-  input {
-    @include position(absolute, 0, 0, 0, 0);
-    border: 0;
-    border-radius: 0;
-    background-color: transparent;
-    font-size: inherit;
-    font-weight: inherit;
-    cursor: pointer;
-  }
-
-  &.on input {
-    z-index: 2;
-    border-bottom: 1px solid $color-primary;
-    mix-blend-mode: darken;
-  }
-
-  ul {
-    z-index: -1;
-    @include position(absolute);
-    width: 100%;
-    height: 1px;
-    background-color: inherit;
-    opacity: 0;
-    overflow: hidden;
-  }
-
-  &.on ul {
-    z-index: 1;
-    height: auto;
-    padding: 58*$unit 10*$unit 10*$unit;
-    border-radius: inherit;
-    opacity: 1;
-    transition: opacity 0.2s;
-  }
-
-  li {
+  .tag {
     display: flex;
     align-items: center;
-    padding: 10*$unit;
-    height: 48*$unit;
-    cursor: pointer;
-
-    &:active {
-      background-color: $color-primary;
-      color: $color-primary;
-    }
-  }
-}
-
-.thumb {
-  position: relative;
-
-  &__inner {
-    position: relative;
-    padding-top: 100%;
+    padding: 0 0.666666em;
+    height: 1.666666em;
+    background: $color-primary;
+    color: white;
   }
 
-  img {
-    @include position(absolute, 0, 0, 0);
-    height: 100%; //position 으로 높이 잡아주면 object-fit 이 적용안됨
-    background-color: #fff;
-    object-fit: cover;
-  }
-}
-
-.prof {
-  position: relative;
-
-  &__inner {
-    position: relative;
-    padding-top: 100%;
-    border-radius: 50%;
-    background-image: url("../img/df_profile.svg");
+  i {
+    margin-left: 0.333333em;
+    width: 1.333333em;
+    height: 1.333333em;
+    background: url("../img/i_info.svg") no-repeat;
     background-size: contain;
-    overflow: hidden;
-
-    img {
-      @include position(absolute, 0, 0, 0);
-      height: 100%; //position 으로 높이 잡아주면 object-fit 이 적용안됨
-      background-color: #fff;
-      object-fit: cover;
-    }
+    opacity: 0.18;
   }
-}
 
-.nickname {
-  display: flex;
-
-  .prof {
-    margin-right: 0.363636em;
-  }
-}
-
-.modal {
-  &_wrap {
-    $a: top;
-    $b: 0.5s;
-    $c: 0.2s;
-    @include transition($a, $b, $c);
-    z-index: 40;
-    @include position(fixed, 100%, 0, 0, 0);
-
-    &::before {
-      $a: opacity;
-      $b: 0.2s;
-      $c: 0s;
-      @include transition($a, $b, $c);
-      content: "";
-      display: block;
-      height: 100%;
-      background-color: rgba(224, 224, 224, 0.6); //딤 색상
-      opacity: 0;
-    }
-
-    @at-root .modal__inner {
-      $a: top;
-      $b: 0.2s;
-      $c: 0s;
-      @include transition($a, $b, $c);
-      @include position(absolute, 100%, 0, 0);
-      display: flex;
-      height: 100%;
-      justify-content: center;
-      align-items: center;
-    }
+  &_guide {
+    z-index: 1;
+    @include position(absolute, 0, 70%);
+    display: none;
+    width: 300*$unit;
+    border: 1px solid $dark;
+    background: white;
+    @extend %m15;
 
     &.on {
-      $a: top;
-      $b: 0.2s;
-      $c: 0s;
-      @include transition($a, $b, $c);
-      top: 0;
-
-      &::before {
-        $a: opacity;
-        $b: 0.3s;
-        $c: 0.2s;
-        @include transition($a, $b, $c);
-        opacity: 1;
-      }
-
-      .modal__inner {
-        $a: top;
-        $b: 0.3s;
-        $c: 0.2s;
-        @include transition($a, $b, $c);
-        top: 0;
-      }
+      display: block;
     }
-  }
 
-  & {
-    display: flex;
-    flex-direction: column;
-    margin: 0 25%;
-    width: 100%;
-    max-height: 70%; //모달 최대높이
-    border-radius: 30*$unit;
-    background-color: #fff; //모달 배경색
-    overflow: auto;
+    &.left {
+      left: unset;
+      right: 0;
+    }
 
-    & > * {
-      flex: 0 0 auto;
+    &__ttl {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 48*$unit;
+      border-bottom: 1px solid $dark-18;
     }
 
     &__con {
-      flex: 1 1 auto;
-    }
+      padding: 16*$unit 20*$unit;
+      color: $dark-60;
+      text-align: left;
 
-    .form_wrap {
-      margin: 0;
-      padding: 0 30*$unit 30*$unit;
+      ul {
+        display: flex;
+        gap: 20*$unit;
 
-      @include mobile-area_media {
-        padding: 0 20*$unit 20*$unit;
-      }
-    }
-
-    @include mobile-area_media {
-      margin: 0;
-      height: 100%;
-      max-height: unset;
-      border-radius: 0;
-    }
-  }
-
-  &__head {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    & > * {
-      padding: 10*$unit 16*$unit;
-    }
-
-    .h1 {
-      display: flex;
-      align-items: center;
-      min-height: 60*$unit;
-      font-weight: $bold;
-
-      @include mobile-area_media {
-        min-height: 40*$unit;
-      }
-    }
-  }
-
-  &__con {
-    overflow-y: auto;
-  }
-
-  &__txt {
-    display: table;
-    width: 100%;
-    padding: 0 30*$unit;
-
-    @include mobile-area_media {
-      padding: 0 20*$unit;
-    }
-
-    & > * {
-      display: table-cell;
-      vertical-align: middle;
-    }
-
-    .center {
-      text-align: center;
-    }
-  }
-
-  &__btn {
-    padding: 0 30*$unit 30*$unit;
-
-    @include mobile-area_media {
-      padding: 0 20*$unit 20*$unit;
-    }
-
-    .btn_wrap {
-      display: flex;
-      justify-content: center;
-    }
-
-    .btn {
-      margin-right: 8*$unit;
-
-      &:first-child {
-        min-width: 96*$unit;
-        width: 40%;
+        & > * {
+          flex: 0 0 auto;
+        }
       }
 
-      &:last-child {
-        margin-right: 0;
-        width: 100%;
+      b {
+        display: inline-block;
+        margin-bottom: 8*$unit;
+        color: $dark;
       }
-    }
-  }
 
-  .close_btn {
-    @include position-center(y, absolute);
-    right: 15*$unit;
-    width: auto;
-
-    @include mobile-area_media {
-      right: 0.5em;
-    }
-
-    i {
-      width: 3em;
-      height: 3em;
-      margin-left: 0;
-    }
-
-    @at-root .i_x {
-      &::after {
-        background-image: url("../img/i_x.svg");
-        background-size: 55.555555%;
-        background-position: center;
+      em {
+        color: $color-primary;
       }
-    }
-  }
 
-  @at-root .system {
-    .modal {
-      &__btn {
-        .btn {
-          margin-right: 0;
-          height: 30*$unit;
-          border: 0;
-          background-color: #fff;
-          @include click_btn_bg();
-          color: $color-primary;
+      small {
+        display: flex;
+        margin-top: 16*$unit;
+        @extend %m12;
+        color: $dark-30;
+        word-break: keep-all;
 
-          &:first-child {
-            width: 100%;
-          }
+        &:before {
+          content: "·";
         }
       }
     }
   }
-
-  @at-root .full_modal {
-    /*전체*/
-    .modal {
-      margin: 0;
-      max-width: unset;
-      height: 100%;
-      max-height: unset;
-      border-radius: 0;
-
-      .btm_btn .btn_wrap {
-        position: absolute;
-      }
-    }
-  }
-
-  @at-root .bottom_modal {
-    /*하단모달*/
-    .modal {
-      margin: 0;
-      max-width: unset;
-      border-radius: 30*$unit 30*$unit 0 0;
-
-      &__inner {
-        align-items: flex-end;
-      }
-    }
-  }
 }
 
-.terms {
-  display: none;
-  margin-bottom: 10*$unit;
-  font-size: 14*$unit;
-  color: $dark-60;
+.table {
+  width: 100%;
+  min-width: 540*$unit;
+  border: 1px solid $dark-18;
 
-  @include mobile-area_media {
-    font-size: 12*$unit;
+  &__wrap {
+    overflow: auto;
   }
 
-  &.on {
-    display: block;
-  }
-
-  &__inner {
-    padding: 16*$unit;
-    border-radius: 10*$unit;
-    background-color: $dark-18;
-
-    & > * + * {
-      margin-top: 0.5em;
-    }
-  }
-
-  table {
-    width: 100%;
-  }
-
-  th, td {
-    height: 48*$unit;
-    padding: 0 1em;
-    border: 1px solid $dark-30;
-    background-color: #fff;
+  &__ttl {
+    margin-bottom: 16*$unit;
+    color: $dark-60;
   }
 
   th {
-    border: 1px solid $dark-30;
-    background-color: $dark-18;
+    padding: 12*$unit;
+    background: $dark-05;
+    @extend %m12;
+    color: $dark-30;
+  }
+
+  td {
+    padding: 12*$unit 4*$unit;
+    text-align: center;
+    color: $dark-30;
+  }
+
+  tbody {
+    tr {
+      border-bottom: 0.8px solid $dark-18;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .ttl {
+    display: flex;
+    gap: 4*$unit;
+    padding: 12*$unit;
+    text-align: left;
+    color: $dark;
+
+    b {
+      flex: 0 0 auto;
+      color: $color-primary;
+    }
+  }
+
+  .on {
+    color: $dark;
+  }
+
+  .small {
+    @extend %m12;
+    color: $dark-60;
+  }
+
+  em {
+    @extend %m12;
+    color: $color-primary;
   }
 }

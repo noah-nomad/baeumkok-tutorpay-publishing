@@ -1,3 +1,5 @@
+$unit: 0.1rem;
+
 //컬러
 $color-primary-dark-30: #002267;
 $color-primary: #0045D1;
@@ -23,6 +25,8 @@ $regular: 400;
 $medium: 500;
 $bold: 700;
 $black: 900;
-
-//기타
-$unit: 0.1rem;
+%m12 {font-size: 12*$unit;font-weight: $medium;}
+%m15 {font-size: 15*$unit;font-weight: $medium;}
+%m17 {font-size: 17*$unit;font-weight: $medium;}
+%b17 {font-size: 17*$unit;font-weight: $bold;}
+%b24 {font-size: 24*$unit;font-weight: $bold;}

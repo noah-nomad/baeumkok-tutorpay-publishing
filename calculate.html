@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <title>배움콕 튜터</title>
+</head>
+<body>
+<!-- ~ <main> 사이에 태그 추가 시, style="height: 100%;" 포함 -->
+<header class="header">
+    <h1 class="logo pc_only"><a href="index.html"><span class="blind">배움콕</span></a></h1>
+    <button class="header__btn mo_only"
+            onclick="setToggle(document.getElementById('nav'));setToggle(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="blind">메뉴</span>
+    </button>
+    <div class="header__menu"><span>강남쌤님</span><button>로그아웃</button></div>
+</header>
+<nav id="nav" class="nav">
+    <div class="nav__menu">
+        <button onclick="location.href='index.html'">클래스 정보</button><!-- 버튼 on/off -->
+        <button onclick="location.href='calculate.html'" class="on">정산 내역</button>
+    </div>
+    <footer class="footer">
+        <a class="btn" href="mailto:partner@noah-nomad.com">문의하기</a>
+        <p>(주)노아노마드</p>
+        <address>서울 강서구 마곡중앙6로 11, 보타닉파크타워 3차 707호</address>
+        <dl><dt>대표</dt><dd>송재욱</dd></dl>
+        <dl><dt>통신판매업신고</dt><dd>제2020-서울강서-1006호</dd></dl>
+    </footer>
+</nav>
+<main class="main class_menu"><!-- 클래스 정보 '.class_menu', 정산 내역 '.calc_menu' -->
+    <div class="main__top">
+        <h2>튜터 정보</h2>
+        <div class="tutor_info">
+            <div class="tutor_info__ttl">
+                <b>강남쌤</b>
+                <small>(배강남)</small>
+                <button onmouseenter="setToggle(document.getElementById('usertype_guide'))"
+                        onmouseleave="setToggle(document.getElementById('usertype_guide'))" class="usertype">
+                    <div class="tag">개인</div>
+                    <i></i>
+                    <div id="usertype_guide" class="usertype_guide">
+                        <div class="usertype_guide__ttl">정산 안내</div>
+                        <div class="usertype_guide__con">
+                            <ul>
+                                <li>
+                                    <b>개인</b><br>
+                                    <span>결제수수료 <em>3.3%</em><br>+ 제세공과금 <em>3.3%</em></span>
+                                </li>
+                                <li>
+                                    <b>기업</b><br>
+                                    <span>결제수수료 <em>3.3%</em><br>+ 부가세 <em>3.3%</em></span>
+                                </li>
+                            </ul>
+                            <small>매입으로 계약한 클래스는 정산하는 방식이 아니므로, 구매 및 정산시간에서 제외됩니다.</small>
+                        </div>
+                    </div>
+                </button>
+            </div>
+            <dl class="phone"><dt></dt><dd>010-1234-1234</dd></dl>
+            <dl class="mail"><dt></dt><dd>test@test.com</dd></dl>
+        </div>
+    </div>
+    <div class="main__btm">
+        <h2>상세내역</h2>
+        <div class="main__tab">
+            <div>
+                <span>총 110건</span>
+                <input type="date" class="datepicker">
+            </div>
+            <button class="text_btn">상품보기 ></button>
+        </div>
+        <div class="table__wrap">
+            <table class="table">
+                <colgroup>
+                    <col style="width: 5%">
+                    <col style="width: 10%">
+                    <col style="width: 20%">
+                    <col style="width: 20%">
+                    <col style="width: 20%">
+                    <col style="width: 25%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th><div class="checkbox"><label><input type="checkbox"></label></div></th>
+                        <th><p>no</p></th>
+                        <th><p>정산일</p></th>
+                        <th><p>정산 완료</p></th>
+                        <th><p>정산 대기</p></th>
+                        <th><p>입금정보</p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 데이터 없을 때 -->
+                    <!--<tr>
+                        <td colspan="6">데이터가 아직 없습니다.</td>
+                    </tr>-->
+
+                    <!-- 데이터 있을 때 -->
+                    <tr>
+                        <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
+                        <td><p>110</p></td>
+                        <td><p>2021.12.20</p></td>
+                        <td><p class="on">1시간 30분</p><em>9,340원</em></td>
+                        <td><p class="on">30분</p><p class="small">5,604원</p></td>
+                        <td><p class="small">국민은행 123-45-67-890000<br>(예금주: 배강남)</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<script>
+    // on 토글
+    function setToggle($el) {
+        $el.classList.toggle('on');
+    }
+</script>
+</body>
+</html>

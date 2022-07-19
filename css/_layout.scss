@@ -1,32 +1,87 @@
 @import "style";
 
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .header {
   z-index: 10;
   @include position(sticky, 0, 0, 0);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 240px;
   height: 60*$unit;
-  padding: 0 30*$unit;
+  padding: 0 20*$unit 0 30*$unit;
   background-color: white;
   border-bottom: 1px solid $dark-18;
+  overflow: auto;
+  transition: .2s padding;
+
+  @include mobile-area_media {
+    padding: 0 20*$unit;
+    transition: .2s padding;
+  }
+
+  & > * {
+    flex: 0 0 auto;
+  }
+
+  &__btn {
+    position: relative;
+    padding: 2*$unit;
+    width: 24px;
+    height: 24px;
+    transform: rotate(0deg);
+    transition: .4s ease-in-out;
+
+    span {
+      @include position(absolute, unset, 4*$unit);
+      width: 20*$unit;
+      height: 1.8px;
+      background: $dark;
+      opacity: 1;
+      transform: rotate(0deg);
+      transition: .2s ease-in-out;
+
+      &:nth-child(1) {top: 6*$unit;}
+      &:nth-child(2), &:nth-child(3) {top: 12*$unit;}
+      &:nth-child(4) {top: 18*$unit;}
+    }
+
+    &.on {
+      span {
+        &:nth-child(1) {top: 12*$unit;left: 50%;width: 0;}
+        &:nth-child(2) {transform: rotate(45deg);}
+        &:nth-child(3) {transform: rotate(-45deg);}
+        &:nth-child(4) {top: 12*$unit;left: 50%;width: 0;}
+      }
+    }
+
+  }
 
   &__menu {
     display: flex;
     align-items: center;
+    margin-left: 20*$unit;
 
     button {
       margin-left: 8*$unit;
       padding: 8*$unit;
-      padding-right: 0;
       width: auto;
+      border-radius: 4*$unit;
       color: $dark-60;
       
       &:hover {
         color: $color-primary;
-        font-weight: $bold;
       }
+
+      @include click-btn_bg();
     }
   }
 
@@ -36,6 +91,7 @@
 }
 
 .nav {
+  z-index: 10;
   @include position(fixed, 60*$unit, 0, unset, 0);
   display: flex;
   flex-direction: column;
@@ -44,12 +100,22 @@
   width: 174*$unit;
   background: $dark;
   overflow: auto;
+  transition: .2s left;
+
+  @include mobile-area_media {
+    left: -174*$unit;
+    transition: .2s left;
+
+    &.on {
+      left: 0;
+    }
+  }
 
   button {
-    padding: 12*$unit 0 12*$unit 26*$unit;
+    padding: 12*$unit 0 12*$unit (30-4)*$unit;
     border-left: 4*$unit solid transparent;
     color: $light-60;
-    font-size: 17*$unit;
+    @extend %m17;
     text-align: left;
 
     &.on {
@@ -67,7 +133,7 @@
 .footer {
   padding: 20*$unit;
   padding-bottom: 0;
-  font-size: 12*$unit;
+  @extend %m12;
   color: $light-60;
 
   a {
@@ -89,15 +155,105 @@
 }
 
 .main {
-  min-width: 240px;
+  flex: 1;
+  padding-left: 174*$unit;
+  overflow: auto;
+  transition: .2s padding-left;
 
-  h2 {}
-  
+  @include mobile-area_media {
+    padding-left: 0;
+    transition: .2s padding-left;
+  }
+
   &__top {
+    padding: 20*$unit;
     background: $dark-05;
   }
 
   &__btm {
+    padding: 20*$unit;
+  }
+
+  &__tab {
+    @include position(sticky, 0, 0, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20*$unit;
+    height: 72*$unit;
+    background: white;
+
+    .text_btn {
+      flex: 0 0 auto;
+      height: 40*$unit;
+      border-radius: 4*$unit;
+    }
+
+    .datepicker {
+      width: auto;
+    }
   }
 }
 
+.class_menu {
+  .main {
+    &__top {
+      display: flex;
+
+      & > * {
+        flex: 0 0 auto;
+      }
+
+      h2 {
+        margin-right: 20*$unit;
+      }
+    }
+
+    &__btm {
+      .table__wrap {
+        padding: 20*$unit 0;
+      }
+    }
+  }
+}
+
+.tutor_info {
+  &__ttl {
+    display: flex;
+    gap: 4*$unit;
+    @extend %m17;
+
+    small {
+      color: $dark-30;
+    }
+  }
+
+  dl {
+    display: flex;
+    align-items: center;
+    gap: 4*$unit;
+    margin-top: 4*$unit;
+    color: $dark-60;
+
+    &.phone {
+      margin-top: 16*$unit;
+
+      dt {
+        background: url("../img/i_phone.svg") no-repeat;
+      }
+    }
+
+    &.mail {
+      dt {
+        background: url("../img/i_mail.svg") no-repeat;
+      }
+    }
+
+    dt {
+      width: 1.066666em;
+      height: 1.066666em;
+      background-size: contain;
+      opacity: 0.18;
+    }
+  }
+}

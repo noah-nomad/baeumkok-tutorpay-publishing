@@ -83,7 +83,7 @@ table {
     border-spacing: 0;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-weight: normal;
+    font-weight: inherit;
 }
 address, caption, cite, code, dfn, em, var {
     font-style: normal;
@@ -147,4 +147,5 @@ fieldset {
 }
 ::selection {
     background-color: $color-primary;
+    color: white;
 }
