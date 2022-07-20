@@ -803,7 +803,7 @@ body {
   overflow: auto;
   transition: 0.2s padding-left;
 }
-.main__top {
+.main__top, .bank_info__wrap {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -931,6 +931,10 @@ body {
   border-radius: 0.8rem;
   box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 2px rgba(255, 255, 255, 0.6);
   color: white;
+}
+.bank_info__wrap {
+  padding: 0;
+  max-width: 100%;
 }
 .bank_info dl {
   display: flex;
