@@ -20,7 +20,10 @@
         <span></span>
         <span class="blind">메뉴</span>
     </button>
-    <div class="header__menu"><span>강남쌤님</span><button>로그아웃</button></div>
+    <div class="header__menu">
+        <span>강남쌤님</span>
+        <button onclick="location.href='login.html'">로그아웃</button>
+    </div>
 </header>
 <nav id="nav" class="nav">
     <div class="nav__menu">
@@ -28,7 +31,7 @@
         <button onclick="location.href='calculate.html'">정산 내역</button>
     </div>
     <footer class="footer">
-        <a class="btn" href="mailto:partner@noah-nomad.com">문의하기</a>
+        <a class="btn" href="mailto:partner@noah-nomad.com"><i></i>문의하기</a>
         <p>(주)노아노마드</p>
         <address>서울 강서구 마곡중앙6로 11, 보타닉파크타워 3차 707호</address>
         <dl><dt>대표</dt><dd>송재욱</dd></dl>
@@ -71,12 +74,7 @@
     <div class="main__btm">
         <h2>클래스 정보</h2>
         <div class="main__tab">
-            <select class="select">
-                <option value="">카카오모먼트 마케팅1</option>
-                <option value="">카카오모먼트 마케팅2</option>
-                <option value="">카카오모먼트 마케팅3</option>
-                <option value="">카카오모먼트 마케팅4</option>
-            </select>
+            <button class="select">카카오모먼트 마케팅</button>
             <button class="text_btn">상품보기 ></button>
         </div>
         <div class="table__wrap">
@@ -125,7 +123,7 @@
             </table>
         </div>
         <div class="table__wrap">
-            <div class="table__ttl">[1] 카카오모먼트 기초지식</div>
+            <div class="table__ttl"><b>매입</b>[1] 카카오모먼트 기초지식</div>
             <table class="table">
                 <colgroup>
                     <col style="width: 60%">

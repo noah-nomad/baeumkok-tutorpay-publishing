@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <title>배움콕 튜터</title>
+</head>
+<body>
+<!-- ~ <main> 사이에 태그 추가 시, style="height: 100%;" 포함 -->
+<header class="header">
+    <h1 class="logo"><a href="index.html"><span class="blind">배움콕</span></a></h1>
+</header>
+<nav id="nav" class="nav"></nav>
+<main class="main">
+    <div class="form_wrap">
+        <h2>로그인</h2>
+        <div class="form">
+            <ul class="form_ul">
+                <li class="form_li">
+                    <div class="form_ttl"><span>아이디</span></div>
+                    <div class="form_in">
+                        <label class="input"><input type="text"></label>
+                        <p class="valid">유효성 체크 문구</p><!--'on 추가'-->
+                    </div>
+                </li>
+                <li class="form_li">
+                    <div class="form_ttl"><span>비밀번호</span></div>
+                    <div class="form_in">
+                        <label class="input"><input type="password"></label>
+                        <p class="valid">유효성 체크 문구</p><!--'on 추가'-->
+                    </div>
+                </li>
+                <li>
+                    <p class="hint">· 5회 이상 로그인 실패 시 5분간 접속이 불가합니다</p>
+                    <button onclick="location.href='index.html'" class="btn">로그인</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+</body>
+</html>

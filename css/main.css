@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.footer, .table em, .table .small, .table th, .usertype_guide__con small, .usertype, .text_btn {
+.bank_info dl dt, .bank_info dl small, .sum_info dt, .sum_info dd em, .main__tab .radio, .footer, .table em, .table .small, .table th, .usertype_guide__con small, .usertype, .valid, .text_btn {
   font-size: 1.2rem;
   font-weight: 500;
 }
@@ -12,6 +12,11 @@
 .tutor_info__ttl, .nav button {
   font-size: 1.7rem;
   font-weight: 500;
+}
+
+.form_wrap h2 {
+  font-size: 1.7rem;
+  font-weight: 700;
 }
 
 @font-face {
@@ -117,12 +122,12 @@ address, caption, cite, code, dfn, em, var {
   cursor: pointer;
 }
 
-input, .datepicker, textarea, select, *[role=button] {
+input, textarea, select, *[role=button] {
   width: 100%;
   -webkit-appearance: none;
   -webkit-border-radius: 0;
 }
-input:disabled, .datepicker:disabled, textarea:disabled, select:disabled, *[role=button]:disabled {
+input:disabled, textarea:disabled, select:disabled, *[role=button]:disabled {
   opacity: 1;
 }
 
@@ -130,7 +135,7 @@ label, textarea {
   display: block;
 }
 
-input[type=checkbox], [type=checkbox].datepicker, input[type=radio], [type=radio].datepicker {
+input[type=checkbox], input[type=radio] {
   position: absolute;
   top: 0;
   left: 0;
@@ -144,18 +149,18 @@ input[type=checkbox], [type=checkbox].datepicker, input[type=radio], [type=radio
   cursor: pointer;
 }
 
-input[type=search]::-webkit-search-cancel-button, [type=search].datepicker::-webkit-search-cancel-button {
+input[type=search]::-webkit-search-cancel-button {
   display: none;
 }
-input[type=number], [type=number].datepicker {
+input[type=number] {
   -moz-appearance: textfield;
 }
-input[type=number]::-webkit-inner-spin-button, [type=number].datepicker::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button, [type=number].datepicker::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
-input::-ms-clear, .datepicker::-ms-clear {
+input::-ms-clear {
   display: none;
 }
 
@@ -291,13 +296,19 @@ button i {
 }
 
 .form_wrap {
-  margin: 2rem 0;
-  padding: 0 3rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  width: 28rem;
+  max-width: 100%;
+}
+.form_wrap h2 {
+  margin: 5.4rem 0 4rem;
+  text-align: center;
 }
 .form_li {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin-bottom: 1.6rem;
 }
 .form_li > * {
   flex: 0 0 auto;
@@ -308,65 +319,24 @@ button i {
 .form_li:last-child {
   margin-bottom: 0;
 }
-.form_li input, .form_li .datepicker {
+.form_li input {
   height: 4rem;
 }
 @media (max-width: 767px) {
-  .form_li input, .form_li .datepicker {
+  .form_li input {
     height: 4rem;
   }
 }
-.nowrap {
-  flex-wrap: nowrap;
-}
-.nowrap .form_ttl {
-  margin-bottom: 0;
-  width: 10rem;
-  min-height: 4rem;
-}
-@media (max-width: 767px) {
-  .nowrap .form_ttl {
-    min-height: 4rem;
-  }
-}
-
 .form_ttl {
   display: flex;
   align-items: center;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem;
   width: 100%;
-  font-size: 1.6rem;
-  font-weight: 500;
-}
-@media (max-width: 767px) {
-  .form_ttl {
-    font-size: 1.4rem;
-  }
-}
-.form_ttl small {
-  color: rgba(33, 33, 33, 0.3);
-}
-.form_ttl b {
-  flex: 1;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #0164FF;
-  text-align: right;
-}
-.form_attach_txt {
-  flex: 1;
-  font-size: 1.2rem;
-  color: #0164FF;
-  text-align: right;
+  color: rgba(33, 33, 33, 0.6);
 }
 .form_in {
   width: 100%;
   min-height: 4rem;
-}
-@media (max-width: 767px) {
-  .form_in {
-    min-height: 4rem;
-  }
 }
 .form_in > * {
   margin-top: 0.4rem;
@@ -374,44 +344,10 @@ button i {
 .form_in > *:first-child {
   margin-top: 0;
 }
-.form_in .select {
-  width: 100%;
-}
-.form_in .select::before {
-  right: 1em;
-  background-size: 1.333333em;
-}
 @media (max-width: 767px) {
-  .form_in .select::before {
-    right: 0.6em;
-    background-size: 1em;
-  }
-}
-.form .inline {
-  display: flex;
-  align-items: center;
-  min-height: 4rem;
-}
-@media (max-width: 767px) {
-  .form .inline {
+  .form_in {
     min-height: 4rem;
   }
-}
-.form .inline > * {
-  flex: 1 1 auto;
-}
-.form .inline .btn {
-  flex: 0 0 auto;
-}
-.form .inline > * {
-  margin-right: 0.8rem;
-}
-.form .inline > *:last-child {
-  margin-right: 0;
-}
-.form .inline .btn {
-  width: auto;
-  min-width: 25%;
 }
 .form .btn {
   height: 4rem;
@@ -438,28 +374,10 @@ button i {
   color: rgba(33, 33, 33, 0.3);
   word-break: keep-all;
 }
-.hint em {
-  color: #0164FF;
-}
-.hint .line_btn {
-  display: inline-block;
-  width: auto;
-  margin: 0 0.3em;
-}
-.hint .line_btn i {
-  margin-left: 0.2em;
-  vertical-align: middle;
-  transform: rotate(0);
-}
-.hint .line_btn.on i {
-  transform: rotate(180deg);
-}
 
 /*유효성문구*/
 .valid {
   display: none;
-  font-size: 1.2rem;
-  font-weight: 500;
   color: #F02E19;
 }
 .valid.on {
@@ -473,7 +391,7 @@ button i {
   vertical-align: text-top;
 }
 
-textarea, input, .datepicker {
+textarea, input {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -481,24 +399,28 @@ textarea, input, .datepicker {
   border: 1px solid rgba(33, 33, 33, 0.18);
   background-color: white;
 }
-textarea::placeholder, input::placeholder, .datepicker::placeholder {
+textarea::placeholder, input::placeholder {
   font-weight: 400;
   color: rgba(33, 33, 33, 0.3);
 }
 
-input, .datepicker {
-  padding: 0 1em;
+input {
+  padding: 0 0.8em;
   min-height: 4rem;
+}
+@media (max-width: 767px) {
+  input {
+    padding: 0 0.4em;
+  }
 }
 
 textarea {
-  padding: 0.8em 1em;
-  height: 22.8rem;
+  padding: 0.6em 0.8em;
+  height: 24rem;
   white-space: pre-line;
 }
 
-/*데이트피커*/
-.checkbox input, .checkbox .datepicker, .radio input, .radio .datepicker {
+.checkbox input, .radio input {
   padding: 0;
   width: 1.333333em;
   height: 1.33333em;
@@ -506,19 +428,29 @@ textarea {
   background: url("../img/i_ch.svg") no-repeat;
   background-size: contain;
 }
-.checkbox input:checked, .checkbox .datepicker:checked, .radio input:checked, .radio .datepicker:checked {
+.checkbox input:checked, .radio input:checked {
   border: 0;
   background-image: url("../img/i_ched.svg");
-}
-.checkbox input:checked + *, .checkbox .datepicker:checked + *, .radio input:checked + *, .radio .datepicker:checked + * {
-  font-weight: 700;
-  color: #0164FF;
 }
 .checkbox label, .radio label {
   min-height: 1.333333em;
 }
+.checkbox label > span, .radio label > span {
+  padding-left: 1.666666em;
+}
 
-.select {
+.radio input {
+  background-image: url("../img/i_rd.svg");
+}
+.radio input:checked {
+  background-image: url("../img/i_rded.svg");
+}
+.radio__wrap {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.select, .datepicker {
   position: relative;
   white-space: nowrap;
   overflow: hidden;
@@ -531,11 +463,26 @@ textarea {
   background-size: 1.6rem;
   text-align: left;
 }
-.select:hover {
+.select:hover, .datepicker:hover {
   background-color: #fafafa;
 }
-.select:active {
+.select:active, .datepicker:active {
   background-color: #f2f2f2;
+}
+@media (max-width: 767px) {
+  .select, .datepicker {
+    padding: 0.8rem 3.2rem 0.8rem 0.8rem;
+    background-position: center right 0.8rem;
+  }
+}
+
+.datepicker {
+  background-image: url("../img/i_calendar_c.svg");
+  color: rgba(33, 33, 33, 0.3);
+}
+.datepicker.on {
+  background-image: url("../img/i_x_c.svg");
+  color: #212121;
 }
 
 .usertype {
@@ -561,7 +508,7 @@ textarea {
   opacity: 0.18;
 }
 .usertype_guide {
-  z-index: 1;
+  z-index: 5;
   position: absolute;
   top: 0;
   left: 70%;
@@ -569,6 +516,7 @@ textarea {
   width: 30rem;
   border: 1px solid #212121;
   background: white;
+  color: #212121;
 }
 .usertype_guide.on {
   display: block;
@@ -613,6 +561,14 @@ textarea {
 .usertype_guide__con small:before {
   content: "·";
 }
+@media (max-width: 767px) {
+  .usertype_guide, .usertype_guide.left {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+}
 
 .table {
   width: 100%;
@@ -623,8 +579,15 @@ textarea {
   overflow: auto;
 }
 .table__ttl {
+  position: sticky;
+  top: unset;
+  left: 0;
   margin-bottom: 1.6rem;
   color: rgba(33, 33, 33, 0.6);
+}
+.table__ttl b {
+  margin-right: 0.4rem;
+  color: #0164FF;
 }
 .table th {
   padding: 1.2rem;
@@ -688,12 +651,6 @@ body {
   border-bottom: 1px solid rgba(33, 33, 33, 0.18);
   overflow: auto;
   transition: 0.2s padding;
-}
-@media (max-width: 767px) {
-  .header {
-    padding: 0 2rem;
-    transition: 0.2s padding;
-  }
 }
 .header > * {
   flex: 0 0 auto;
@@ -766,6 +723,12 @@ body {
 .header .logo {
   width: 7.2rem;
 }
+@media (max-width: 767px) {
+  .header {
+    padding: 0 0.8rem 0 1.6rem;
+    transition: 0.2s padding;
+  }
+}
 
 .nav {
   z-index: 10;
@@ -783,15 +746,6 @@ body {
   overflow: auto;
   transition: 0.2s left;
 }
-@media (max-width: 767px) {
-  .nav {
-    left: -17.4rem;
-    transition: 0.2s left;
-  }
-  .nav.on {
-    left: 0;
-  }
-}
 .nav button {
   padding: 1.2rem 0 1.2rem 2.6rem;
   border-left: 0.4rem solid transparent;
@@ -806,6 +760,15 @@ body {
 .nav button:hover {
   color: white;
 }
+@media (max-width: 767px) {
+  .nav {
+    left: -17.4rem;
+    transition: 0.2s left;
+  }
+  .nav.on {
+    left: 0;
+  }
+}
 
 .footer {
   padding: 2rem;
@@ -817,6 +780,13 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
+}
+.footer a i {
+  margin-right: 0.4rem;
+  width: 1.133333em;
+  height: 1.133333em;
+  background: url("../img/i_send_mail.png") no-repeat;
+  background-size: contain;
 }
 .footer dl {
   display: flex;
@@ -833,29 +803,32 @@ body {
   overflow: auto;
   transition: 0.2s padding-left;
 }
-@media (max-width: 767px) {
-  .main {
-    padding-left: 0;
-    transition: 0.2s padding-left;
-  }
-}
 .main__top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: stretch;
   padding: 2rem;
   background: #F8F8F8;
 }
 .main__btm {
   padding: 2rem;
 }
+.main__btm .table__wrap {
+  padding: 2rem 0;
+}
 .main__tab {
+  z-index: 1;
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 2rem;
-  height: 7.2rem;
+  gap: 1.6rem;
+  padding: 0.8rem 0;
+  min-height: 7.2rem;
   background: white;
 }
 .main__tab .text_btn {
@@ -863,25 +836,38 @@ body {
   height: 4rem;
   border-radius: 0.4rem;
 }
+.main__tab .select, .main__tab .datepicker {
+  flex: 1;
+}
 .main__tab .datepicker {
+  flex: unset;
   width: auto;
+  max-width: 100%;
 }
-
-.class_menu .main__top {
-  display: flex;
+.main__tab .radio {
+  color: #212121;
 }
-.class_menu .main__top > * {
-  flex: 0 0 auto;
+.main__tab .radio__wrap {
+  flex: 1 0 auto;
 }
-.class_menu .main__top h2 {
-  margin-right: 2rem;
+@media (max-width: 767px) {
+  .main__tab {
+    gap: 1.2rem;
+  }
+  .main__tab .text_btn {
+    height: 3rem;
+  }
 }
-.class_menu .main__btm .table__wrap {
-  padding: 2rem 0;
+@media (max-width: 767px) {
+  .main {
+    padding-left: 0;
+    transition: 0.2s padding-left;
+  }
 }
 
 .tutor_info__ttl {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.4rem;
 }
 .tutor_info__ttl small {
@@ -908,6 +894,74 @@ body {
   height: 1.066666em;
   background-size: contain;
   opacity: 0.18;
+}
+
+.sum_info {
+  flex: 1 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 100%;
+  background: white;
+}
+.sum_info__box {
+  flex: 1 0 auto;
+  padding: 0.8rem;
+  text-align: center;
+}
+.sum_info dt {
+  margin-bottom: 1.2rem;
+  color: rgba(33, 33, 33, 0.3);
+}
+.sum_info dd {
+  line-height: 1;
+}
+.sum_info .on {
+  color: #0164FF;
+}
+
+.bank_info {
+  position: relative;
+  padding: 1.6rem 2rem;
+  width: 22.6rem;
+  max-width: 100%;
+  height: 13.4rem;
+  background: linear-gradient(108.84deg, #5A5A5A 0%, #323232 100%);
+  border: 1px solid rgba(33, 33, 33, 0.18);
+  border-radius: 0.8rem;
+  box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 2px rgba(255, 255, 255, 0.6);
+  color: white;
+}
+.bank_info dl {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.bank_info dl dt, .bank_info dl small {
+  color: rgba(255, 255, 255, 0.6);
+}
+.bank_info dd {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bank_info dd small em {
+  margin-left: 0.4rem;
+  color: white;
+}
+.bank_info .usertype {
+  position: absolute;
+  top: 1.2rem;
+  left: unset;
+  right: 1.2rem;
+}
+.bank_info .usertype .tag {
+  background-color: #212121;
+}
+.bank_info .usertype i {
+  background-image: url("../img/i_info_w.svg");
 }
 
 /*----------유튜브--------------------------------------------------------------------------------*/

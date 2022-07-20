@@ -23,11 +23,6 @@ body {
   overflow: auto;
   transition: .2s padding;
 
-  @include mobile-area_media {
-    padding: 0 20*$unit;
-    transition: .2s padding;
-  }
-
   & > * {
     flex: 0 0 auto;
   }
@@ -49,17 +44,40 @@ body {
       transform: rotate(0deg);
       transition: .2s ease-in-out;
 
-      &:nth-child(1) {top: 6*$unit;}
-      &:nth-child(2), &:nth-child(3) {top: 12*$unit;}
-      &:nth-child(4) {top: 18*$unit;}
+      &:nth-child(1) {
+        top: 6*$unit;
+      }
+
+      &:nth-child(2), &:nth-child(3) {
+        top: 12*$unit;
+      }
+
+      &:nth-child(4) {
+        top: 18*$unit;
+      }
     }
 
     &.on {
       span {
-        &:nth-child(1) {top: 12*$unit;left: 50%;width: 0;}
-        &:nth-child(2) {transform: rotate(45deg);}
-        &:nth-child(3) {transform: rotate(-45deg);}
-        &:nth-child(4) {top: 12*$unit;left: 50%;width: 0;}
+        &:nth-child(1) {
+          top: 12*$unit;
+          left: 50%;
+          width: 0;
+        }
+
+        &:nth-child(2) {
+          transform: rotate(45deg);
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+        }
+
+        &:nth-child(4) {
+          top: 12*$unit;
+          left: 50%;
+          width: 0;
+        }
       }
     }
 
@@ -76,7 +94,7 @@ body {
       width: auto;
       border-radius: 4*$unit;
       color: $dark-60;
-      
+
       &:hover {
         color: $color-primary;
       }
@@ -87,6 +105,11 @@ body {
 
   .logo {
     width: 72*$unit;
+  }
+
+  @include mobile-area_media {
+    padding: 0 8*$unit 0 16*$unit;
+    transition: .2s padding;
   }
 }
 
@@ -101,15 +124,6 @@ body {
   background: $dark;
   overflow: auto;
   transition: .2s left;
-
-  @include mobile-area_media {
-    left: -174*$unit;
-    transition: .2s left;
-
-    &.on {
-      left: 0;
-    }
-  }
 
   button {
     padding: 12*$unit 0 12*$unit (30-4)*$unit;
@@ -128,6 +142,15 @@ body {
       color: white;
     }
   }
+
+  @include mobile-area_media {
+    left: -174*$unit;
+    transition: .2s left;
+
+    &.on {
+      left: 0;
+    }
+  }
 }
 
 .footer {
@@ -141,6 +164,14 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 20*$unit;
+
+    i {
+      margin-right: 4*$unit;
+      width: 1.133333em;
+      height: 1.133333em;
+      background: url("../img/i_send_mail.png") no-repeat;
+      background-size: contain;
+    }
   }
 
   dl {
@@ -160,27 +191,32 @@ body {
   overflow: auto;
   transition: .2s padding-left;
 
-  @include mobile-area_media {
-    padding-left: 0;
-    transition: .2s padding-left;
-  }
-
   &__top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20*$unit;
+    align-items: stretch;
     padding: 20*$unit;
     background: $dark-05;
   }
 
   &__btm {
     padding: 20*$unit;
+
+    .table__wrap {
+      padding: 20*$unit 0;
+    }
   }
 
   &__tab {
+    z-index: 1;
     @include position(sticky, 0, 0, 0);
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 20*$unit;
-    height: 72*$unit;
+    gap: 16*$unit;
+    padding: 8*$unit 0;
+    min-height: 72*$unit;
     background: white;
 
     .text_btn {
@@ -189,37 +225,44 @@ body {
       border-radius: 4*$unit;
     }
 
+    .select {
+      flex: 1;
+    }
+
     .datepicker {
+      flex: unset;
       width: auto;
+      max-width: 100%;
+    }
+
+    .radio {
+      @extend %m12;
+      color: $dark;
+
+      &__wrap {
+        flex: 1 0 auto;
+      }
+    }
+
+    @include mobile-area_media {
+      gap: 12*$unit;
+
+      .text_btn {
+        height: 30*$unit;
+      }
     }
   }
-}
 
-.class_menu {
-  .main {
-    &__top {
-      display: flex;
-
-      & > * {
-        flex: 0 0 auto;
-      }
-
-      h2 {
-        margin-right: 20*$unit;
-      }
-    }
-
-    &__btm {
-      .table__wrap {
-        padding: 20*$unit 0;
-      }
-    }
+  @include mobile-area_media {
+    padding-left: 0;
+    transition: .2s padding-left;
   }
 }
 
 .tutor_info {
   &__ttl {
     display: flex;
+    flex-wrap: wrap;
     gap: 4*$unit;
     @extend %m17;
 
@@ -254,6 +297,89 @@ body {
       height: 1.066666em;
       background-size: contain;
       opacity: 0.18;
+    }
+  }
+}
+
+.sum_info {
+  flex: 1 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 100%;
+  background: white;
+
+  &__box {
+    flex: 1 0 auto;
+    padding: 8*$unit;
+    text-align: center;
+  }
+
+  dt, dd em {
+    @extend %m12;
+  }
+
+  dt {
+    margin-bottom: 12*$unit;
+    color: $dark-30;
+  }
+
+  dd {
+    line-height: 1;
+  }
+
+  .on {
+    color: $color-primary;
+  }
+}
+
+.bank_info {
+  position: relative;
+  padding: 16*$unit 20*$unit;
+  width: 226*$unit;
+  max-width: 100%;
+  height: 134*$unit;
+  background: linear-gradient(108.84deg, #5A5A5A 0%, #323232 100%);
+  border: 1px solid $dark-18;
+  border-radius: 8*$unit;
+  box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 2px rgba(255, 255, 255, 0.6);
+  color: white;
+
+  dl {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    dt, small {
+      @extend %m12;
+      color: $light-60;
+    }
+  }
+
+  dd {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    small {
+      em {
+        margin-left: 4*$unit;
+        color: white;
+      }
+    }
+  }
+
+  .usertype {
+    @include position(absolute, 12*$unit, unset, 12*$unit);
+
+    .tag {
+      background-color: $dark;
+    }
+
+    i{
+      background-image: url("../img/i_info_w.svg");
     }
   }
 }

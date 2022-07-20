@@ -142,17 +142,22 @@ $form-box-height: 40*$unit;
 $form-box-m-height: 40*$unit;
 .form {
   &_wrap {
-    margin: 20*$unit 0;
-    padding: 0 30*$unit;
-  }
+    margin: 20*$unit auto;
+    padding: 20*$unit;
+    width: 280*$unit;
+    max-width: 100%;
 
-  &_ul {
+    h2 {
+      margin: 54*$unit 0 40*$unit;
+      @extend %b17;
+      text-align: center;
+    }
   }
 
   &_li {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 20*$unit; //폼 리스트 사이간격
+    margin-bottom: 16*$unit; //폼 리스트 사이간격
 
     & > * {
       flex: 0 0 auto;
@@ -173,63 +178,19 @@ $form-box-m-height: 40*$unit;
         height: $form-box-m-height;
       }
     }
-
-    @at-root .nowrap {
-      flex-wrap: nowrap;
-
-      .form {
-        &_ttl {
-          margin-bottom: 0;
-          width: 100*$unit; //타이틀 너비
-          min-height: $form-box-height;
-
-          @include mobile-area_media {
-            min-height: $form-box-m-height;
-          }
-        }
-      }
-    }
   }
 
   &_ttl {
     display: flex;
     align-items: center;
-    margin-bottom: 8*$unit;
+    margin-bottom: 4*$unit;
     width: 100%;
-    font-size: 16*$unit;
-    font-weight: $medium;
-
-    @include mobile-area_media {
-      font-size: 14*$unit;
-    }
-
-    small {
-      color: $dark-30;
-    }
-
-    b {
-      flex: 1;
-      font-size: 12*$unit;
-      font-weight: $bold;
-      color: $color-primary;
-      text-align: right;
-    }
-  }
-
-  &_attach_txt {
-    flex: 1;
-    font-size: 12*$unit;
-    color: $color-primary;
-    text-align: right;
+    color: $dark-60;
   }
 
   &_in {
     width: 100%;
     min-height: $form-box-height;
-
-    @include mobile-area_media {
-      min-height: $form-box-m-height;
-    }
 
     & > * {
       margin-top: 4*$unit; //폼 인풋 사이간격
@@ -239,49 +200,8 @@ $form-box-m-height: 40*$unit;
       }
     }
 
-    .select {
-      width: 100%;
-
-      &::before {
-        right: 1em;
-        background-size: 1.333333em;
-
-        @include mobile-area_media {
-          right: 0.6em;
-          background-size: 1em;
-        }
-      }
-    }
-  }
-
-  .inline {
-    display: flex;
-    align-items: center;
-    min-height: $form-box-height;
-
     @include mobile-area_media {
       min-height: $form-box-m-height;
-    }
-
-    & > * {
-      flex: 1 1 auto;
-    }
-
-    .btn {
-      flex: 0 0 auto;
-    }
-
-    & > * {
-      margin-right: 8*$unit;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-
-    .btn {
-      width: auto;
-      min-width: 25%; //인풋과 버튼이 나란히 있을 때 버튼의 너비 최소값
     }
   }
 
@@ -310,35 +230,12 @@ $form-box-m-height: 40*$unit;
   font-weight: $medium;
   color: $dark-30;
   word-break: keep-all;
-
-  em {
-    color: $color-primary;
-  }
-
-  .line_btn {
-    display: inline-block;
-    width: auto;
-    margin: 0 0.3em;
-
-    i {
-      margin-left: 0.2em;
-      vertical-align: middle;
-      transform: rotate(0);
-    }
-
-    &.on {
-      i {
-        transform: rotate(180deg);
-      }
-    }
-  }
 }
 
 /*유효성문구*/
 .valid {
   display: none;
-  font-size: 12*$unit;
-  font-weight: $medium;
+  @extend %m12;
   color: $color-error;
 
   &.on {
@@ -367,20 +264,19 @@ $form-box-m-height: 40*$unit;
 
 input {
   @extend %input-common;
-  padding: 0 1em; //인풋 내부여백
+  padding: 0 0.8em; //인풋 내부여백
   min-height: 40*$unit; //인풋 높이
+
+  @include mobile-area_media {
+    padding: 0 0.4em;
+  }
 }
 
 textarea {
   @extend %input-common;
-  padding: 0.8em 1em;
-  height: 228*$unit;
+  padding: 0.6em 0.8em;
+  height: 240*$unit;
   white-space: pre-line;
-}
-
-/*데이트피커*/
-.datepicker {
-  @extend input;
 }
 
 .checkbox, .radio {
@@ -397,24 +293,30 @@ textarea {
     &:checked {
       border: 0;
       background-image: url("../img/i_ched.svg");
-
-      & + * {
-        font-weight: $bold;
-        color: $color-primary;
-      }
     }
   }
 
   label {
     min-height: 1.333333em;
+
+    & > span {
+      padding-left: 1.666666em;
+    }
   }
 }
 
 .radio {
   input {
+    background-image: url("../img/i_rd.svg");
 
     &:checked {
+      background-image: url("../img/i_rded.svg");
     }
+  }
+
+  &__wrap {
+    display: flex;
+    gap: 8*$unit;
   }
 }
 
@@ -427,8 +329,23 @@ textarea {
   background: url("../img/i_select_c.svg") no-repeat center right 12*$unit;
   background-size: 16*$unit;
   text-align: left;
-
   @include click-btn_bg();
+
+  @include mobile-area_media {
+    padding: 8*$unit 32*$unit 8*$unit 8*$unit;
+    background-position: center right 8*$unit;
+  }
+}
+
+.datepicker {
+  @extend .select;
+  background-image: url("../img/i_calendar_c.svg");
+  color: $dark-30;
+
+  &.on {
+    background-image: url("../img/i_x_c.svg");
+    color: $dark;
+  }
 }
 
 .usertype {
@@ -457,13 +374,14 @@ textarea {
   }
 
   &_guide {
-    z-index: 1;
+    z-index: 5;
     @include position(absolute, 0, 70%);
     display: none;
     width: 300*$unit;
     border: 1px solid $dark;
     background: white;
     @extend %m15;
+    color: $dark;
 
     &.on {
       display: block;
@@ -518,6 +436,12 @@ textarea {
         }
       }
     }
+
+    @include mobile-area_media {
+      &, &.left {
+        @include position-center(xy, fixed);
+      }
+    }
   }
 }
 
@@ -531,8 +455,14 @@ textarea {
   }
 
   &__ttl {
+    @include position(sticky, unset, 0);
     margin-bottom: 16*$unit;
     color: $dark-60;
+
+    b {
+      margin-right: 4*$unit;
+      color: $color-primary;
+    }
   }
 
   th {
