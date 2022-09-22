@@ -40,8 +40,7 @@ html {
     }
 }*/
 body {
-    font-size: 15*$unit;
-    font-weight: $medium;
+    @extend %m15;
 }
 * {
     margin: 0;

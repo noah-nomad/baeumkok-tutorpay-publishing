@@ -88,7 +88,7 @@ button {
   border-radius: 100*$unit;
   background-color: $color-primary;
   @include click_btn_bg($color-primary); //배경색이랑 같은 값을 파라미터로 넣어주기
-  font-size: 15*$unit;
+  @extend %m15;
   color: #fff;
   word-break: keep-all;
   line-height: 1.2;
@@ -122,8 +122,11 @@ button {
     }
   }
 
-  &.round {
-    border-radius: 40*$unit;
+  //사이즈
+  &.smaller {
+    padding: 0 8*$unit;
+    height: 26*$unit;
+    @extend %m12;
   }
 }
 
@@ -226,8 +229,7 @@ $form-box-m-height: 40*$unit;
 //힌트문구
 .hint {
   padding: 0.8em 0;
-  font-size: 12*$unit;
-  font-weight: $medium;
+  @extend %m12;
   color: $dark-30;
   word-break: keep-all;
 }
@@ -240,6 +242,7 @@ $form-box-m-height: 40*$unit;
 
   &.on {
     display: flex;
+    margin-top: 4*$unit;
   }
 
   i {
@@ -277,6 +280,11 @@ textarea {
   padding: 0.6em 0.8em;
   height: 240*$unit;
   white-space: pre-line;
+  overflow: initial;
+
+  &::placeholder {
+    line-height: 1.5;
+  }
 }
 
 .checkbox, .radio {
@@ -465,6 +473,27 @@ textarea {
     }
   }
 
+  &__pagination {
+    @include position(sticky, null, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    padding-top: 40*$unit;
+    color: $dark-30;
+
+    button {
+      flex: 0 0 auto;
+      padding: 0 12*$unit;
+      min-width: 32*$unit;
+      width: auto;
+      height: 32*$unit;
+      @include click-btn_bg();
+
+      &.on {
+        color: $color-primary;
+      }
+    }
+  }
+
   th {
     padding: 12*$unit;
     background: $dark-05;
@@ -484,6 +513,11 @@ textarea {
 
       &:last-child {
         border-bottom: 0;
+      }
+
+      .btn {
+        margin: 0 auto;
+        width: auto;
       }
     }
   }
@@ -513,5 +547,145 @@ textarea {
   em {
     @extend %m12;
     color: $color-primary;
+  }
+}
+
+.modal {
+  &_wrap {
+    $a: top;
+    $b: 0.5s;
+    $c: 0.2s;
+    @include transition($a, $b, $c);
+    z-index: 40;
+    @include position(fixed, 100%, 0, 0, 0);
+
+    &::before {
+      $a: opacity;
+      $b: 0.2s;
+      $c: 0s;
+      @include transition($a, $b, $c);
+      content: "";
+      display: block;
+      height: 100%;
+      background-color: rgba(33, 33, 33, 0.6); //딤 색상
+      opacity: 0;
+    }
+
+    @at-root .modal__inner {
+      $a: top;
+      $b: 0.2s;
+      $c: 0s;
+      @include transition($a, $b, $c);
+      @include position(absolute, 100%, 0, 0);
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &.on {
+      $a: top;
+      $b: 0.2s;
+      $c: 0s;
+      @include transition($a, $b, $c);
+      top: 0;
+
+      &::before {
+        $a: opacity;
+        $b: 0.3s;
+        $c: 0.2s;
+        @include transition($a, $b, $c);
+        opacity: 1;
+      }
+
+      .modal__inner {
+        $a: top;
+        $b: 0.3s;
+        $c: 0.2s;
+        @include transition($a, $b, $c);
+        top: 0;
+      }
+    }
+  }
+
+  & {
+    display: flex;
+    flex-direction: column;
+    margin: 0 12.5%;
+    width: 100%;
+    max-height: 90%; //모달 최대높이
+    background-color: #fff; //모달 배경색
+    overflow: auto;
+
+    & > * {
+      flex: 0 0 auto;
+    }
+
+    &__con {
+      flex: 1 1 auto;
+    }
+
+    @include mobile-area_media {
+      margin: 0;
+      height: 100%;
+      max-height: unset;
+      border-radius: 0;
+    }
+  }
+
+  &__head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12*$unit;
+    min-height: 60*$unit;
+    padding: 10*$unit 20*$unit;
+    color: $dark-30;
+
+    @include mobile-area_media {
+      min-height: 40*$unit;
+    }
+
+    .ttl {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+    }
+
+    b {
+      @extend %b17;
+      color: $dark;
+    }
+
+    em {
+      margin: 0 8*$unit;
+      color: $dark-60;
+    }
+  }
+
+  &__con {
+    overflow-y: auto;
+  }
+
+  .main {
+    &__tab {
+      padding-left: 20*$unit;
+      padding-right: 20*$unit;
+    }
+  }
+
+  .btn_close {
+    flex: 0 0 auto;
+    display: inline-block;
+    width: 24*$unit;
+    height: 24*$unit;
+    background: url("../img/i_xbox.svg") no-repeat;
+    background-size: cover;
+  }
+
+  .table {
+    &__wrap {
+      padding: 20*$unit;
+    }
   }
 }

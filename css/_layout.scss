@@ -219,6 +219,11 @@ body {
     min-height: 72*$unit;
     background: white;
 
+    .btn {
+      width: auto;
+      min-width: 90*$unit;
+    }
+
     .text_btn {
       flex: 0 0 auto;
       height: 40*$unit;
@@ -233,6 +238,16 @@ body {
       flex: unset;
       width: auto;
       max-width: 100%;
+    }
+
+    .input_wrap {
+      display: flex;
+      gap: 12*$unit;
+      max-width: 100%;
+
+      input {
+        width: 160*$unit;
+      }
     }
 
     .radio {
@@ -250,6 +265,13 @@ body {
       .text_btn {
         height: 30*$unit;
       }
+    }
+  }
+
+  h2 {
+    small {
+      @extend %m12;
+      color: $dark-30;
     }
   }
 
@@ -308,6 +330,14 @@ body {
   align-items: center;
   max-width: 100%;
   background: white;
+
+  &.fixed {
+    flex: 0 0 auto;
+
+    .sum_info__box {
+      min-width: 160*$unit;
+    }
+  }
 
   &__box {
     flex: 1 0 auto;
@@ -386,6 +416,386 @@ body {
 
     i{
       background-image: url("../img/i_info_w.svg");
+    }
+  }
+}
+
+/*b2b*/
+.login {
+  display: flex;
+  justify-content: center;
+  gap: 40*$unit;
+  padding: 120*$unit 0;
+
+  .form_wrap {
+    margin: 0;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  @include mobile-area_media {
+    flex-direction: column;
+    padding: 40*$unit 0;
+    align-items: center;
+  }
+}
+.demo_intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40*$unit;
+  width: 280*$unit;
+  border-radius: 16*$unit;
+  background-color: $dark-05;
+  @extend %b17;
+  text-align: center;
+
+  &__img {
+    margin: 20*$unit auto;
+    width: 180*$unit;
+    padding-top: 55.555555%;
+    background: url("../img/img_demo.png") no-repeat;
+    background-size: contain;
+  }
+
+  .btn {
+    margin: 20*$unit auto;
+    width: 160*$unit;
+    background-color: $dark-05;
+    color: $color-primary;
+
+    &:hover {
+      @include click-btn_bg($dark-05, lighter);
+    }
+  }
+}
+
+.invoice_info {
+  &__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20*$unit;
+  }
+
+  dl {
+    display: flex;
+  }
+
+  dt {
+    margin-right: 8*$unit;
+    color: $dark-30;
+  }
+
+  dd {
+    color: $dark-60;
+
+    .btn.bo {
+      @include click-btn_bg($dark-05);
+      width: auto;
+      background: $dark-05;
+    }
+  }
+}
+
+#company_account {
+  padding: 0;
+  min-height: unset;
+  border: 0;
+  background: transparent;
+}
+
+
+
+%info {
+  &::before {
+    content: "";
+    display: inline-block;
+    margin-right: 4*$unit;
+    width: 16*$unit;
+    height: 16*$unit;
+    background-repeat: no-repeat;
+    background-size: cover;
+    vertical-align: middle;
+  }
+}
+
+.info_clip {
+  @extend %info;
+
+  &::before {
+    background-image: url("../img/i_clip.svg");
+  }
+}
+
+.info_time {
+  @extend %info;
+
+  &::before {
+    background-image: url("../img/i_timepie_filled.svg");
+  }
+}
+
+.accordion {
+  &__class {
+    margin-top: 20*$unit;
+
+    & > * {
+      margin-right: 16*$unit;
+      vertical-align: middle;
+    }
+
+    b {
+      @extend %b24;
+    }
+  }
+
+  &__chapter {
+    display: flex;
+    gap: 16*$unit;
+    padding: 20*$unit;
+
+    dl {
+      display: flex;
+      align-items: center;
+      gap: 8*$unit;
+      flex: 1;
+
+      dt, dd {
+        margin-bottom: 0 !important;
+      }
+
+      dt {
+        flex: 0 0 auto;
+      }
+
+      dd {
+        flex: 1;
+      }
+    }
+
+    button {
+      @include click-btn_bg();
+      flex: 0 0 auto;
+      width: 24*$unit;
+      border-radius: 4*$unit;
+      text-align: center;
+
+      &::before {
+        content: "↓";
+      }
+    }
+  }
+
+  &__clip {
+    display: none;
+    padding: 16*$unit 20*$unit;
+  }
+
+  &_btn {
+    display: flex;
+    gap: 12*$unit;
+
+    button:last-child {
+      display: none;
+    }
+  }
+
+  ul {
+    margin-top: 20*$unit;
+    border: 1px solid $dark-18;
+
+    li + li {
+      border-top: 1px solid $dark-18;
+    }
+  }
+
+  dl {
+    dt, dd{
+      margin-bottom: 4*$unit;
+    }
+
+    dt {
+      color: $dark-30;
+    }
+  }
+
+  textarea {
+    height: 72*$unit;
+    color: $dark-60;
+  }
+
+  .value_change {
+    display: none;
+
+  }
+}
+
+.clip_box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16*$unit;
+  padding: 16*$unit 0;
+
+  &:first-child {
+    padding-top: 0 !important;
+  }
+
+  &__con {
+    flex: 1;
+
+    .empty_data {
+      display: none;
+    }
+
+    .text {
+      @include lines(2);
+    }
+
+    button {
+      @extend %m12;
+      width: auto;
+      color: $color-primary;
+      line-height: 2;
+
+      &::before {
+        content: '전체보기';
+      }
+    }
+
+    &.on {
+      .text {
+        display: block;
+      }
+
+      button {
+        &::before {
+          content: '접어두기';
+        }
+      }
+    }
+  }
+
+  &__video {
+    flex: 0 0 auto;
+    width: 312*$unit;
+    max-width: 100%;
+  }
+
+  .tag {
+    @extend %m12;
+    display: inline-block;
+    margin-left: 8*$unit;
+    padding: 0 4*$unit;
+    background-color: $dark;
+    color: white;
+    line-height: 1.666666;
+  }
+
+  .keyword {
+    @extend %m12;
+    display: inline-block;
+    margin: 4*$unit 0;
+    padding: 0 8*$unit;
+    border: 1px solid $dark-18;
+    line-height: 2;
+  }
+
+  @include mobile-area_media {
+    flex-direction: column;
+  }
+}
+
+.on {
+  .accordion {
+    &__chapter {
+      button {
+        &::before {
+          content: "↑";
+          color: $color-primary;
+        }
+      }
+    }
+
+    &__clip {
+      display: block;
+    }
+  }
+}
+
+.revise_mode {
+  .accordion {
+    &_btn {
+      button:first-child {
+        font-size: 0;
+
+        &::before {
+          content: '취소';
+          @extend %m15;
+        }
+      }
+
+      button:last-child {
+        display: block;
+      }
+    }
+
+    .value, .keyword {
+      display: none;
+    }
+
+    .value_change {
+      display: block;
+    }
+
+    .inline {
+      display: flex;
+      align-items: center;
+      gap: 16*$unit;
+
+      .fill {
+        flex: 1;
+      }
+
+      .hug {
+        flex: 0 0 auto;
+      }
+
+      dt {
+        align-self: flex-start;
+        line-height: 40*$unit;
+      }
+    }
+
+    dl {
+      dd {
+        margin-bottom: 16*$unit;
+      }
+    }
+  }
+
+  .clip_box {
+    padding-top: 36*$unit;
+
+    & + .clip_box {
+      border-top: 1px solid $dark-18;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    .empty_data {
+      display: block;
+
+      &.inline {
+        display: flex;
+      }
+    }
+
+    .text {
+      display: none;
     }
   }
 }

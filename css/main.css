@@ -1,10 +1,10 @@
 @charset "UTF-8";
-.bank_info dl dt, .bank_info dl small, .sum_info dt, .sum_info dd em, .main__tab .radio, .footer, .table em, .table .small, .table th, .usertype_guide__con small, .usertype, .valid, .text_btn {
+.clip_box .keyword, .clip_box .tag, .clip_box__con button, .bank_info dl dt, .bank_info dl small, .sum_info dt, .sum_info dd em, .main h2 small, .main__tab .radio, .footer, .table em, .table .small, .table th, .usertype_guide__con small, .usertype, .valid, .hint, .smaller.btn, .text_btn {
   font-size: 1.2rem;
   font-weight: 500;
 }
 
-.usertype_guide, .checkbox, .radio {
+.revise_mode .accordion_btn button:first-child::before, .usertype_guide, .checkbox, .radio, .btn, body {
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -14,8 +14,13 @@
   font-weight: 500;
 }
 
-.form_wrap h2 {
+.demo_intro, .modal__head b, .form_wrap h2 {
   font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.accordion__class b {
+  font-size: 2.4rem;
   font-weight: 700;
 }
 
@@ -60,11 +65,6 @@ html {
         font-size: 68.75%; //font-size 11px로 지정(아이폰 x 대응)
     }
 }*/
-body {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -244,7 +244,6 @@ button i {
   border: 1px solid transparent;
   border-radius: 10rem;
   background-color: #0164FF;
-  font-size: 1.5rem;
   color: #fff;
   word-break: keep-all;
   line-height: 1.2;
@@ -281,8 +280,9 @@ button i {
   border-color: rgba(33, 33, 33, 0.3);
   color: rgba(33, 33, 33, 0.6);
 }
-.round.btn {
-  border-radius: 4rem;
+.smaller.btn {
+  padding: 0 0.8rem;
+  height: 2.6rem;
 }
 
 .logo {
@@ -369,8 +369,6 @@ button i {
 
 .hint {
   padding: 0.8em 0;
-  font-size: 1.2rem;
-  font-weight: 500;
   color: rgba(33, 33, 33, 0.3);
   word-break: keep-all;
 }
@@ -382,6 +380,7 @@ button i {
 }
 .valid.on {
   display: flex;
+  margin-top: 0.4rem;
 }
 .valid i {
   flex: 0 0 auto;
@@ -418,6 +417,10 @@ textarea {
   padding: 0.6em 0.8em;
   height: 24rem;
   white-space: pre-line;
+  overflow: initial;
+}
+textarea::placeholder {
+  line-height: 1.5;
 }
 
 .checkbox input, .radio input {
@@ -589,6 +592,32 @@ textarea {
   margin-right: 0.4rem;
   color: #0164FF;
 }
+.table__pagination {
+  position: sticky;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
+  color: rgba(33, 33, 33, 0.3);
+}
+.table__pagination button {
+  flex: 0 0 auto;
+  padding: 0 1.2rem;
+  min-width: 3.2rem;
+  width: auto;
+  height: 3.2rem;
+}
+.table__pagination button:hover {
+  background-color: #fafafa;
+}
+.table__pagination button:active {
+  background-color: #f2f2f2;
+}
+.table__pagination button.on {
+  color: #0164FF;
+}
 .table th {
   padding: 1.2rem;
   background: #F8F8F8;
@@ -604,6 +633,10 @@ textarea {
 }
 .table tbody tr:last-child {
   border-bottom: 0;
+}
+.table tbody tr .btn {
+  margin: 0 auto;
+  width: auto;
 }
 .table .ttl {
   display: flex;
@@ -624,6 +657,127 @@ textarea {
 }
 .table em {
   color: #0164FF;
+}
+
+.modal_wrap {
+  transition-property: top;
+  transition-duration: 0.5s;
+  transition-delay: 0.2s;
+  z-index: 40;
+  position: fixed;
+  top: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.modal_wrap::before {
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-delay: 0s;
+  content: "";
+  display: block;
+  height: 100%;
+  background-color: rgba(33, 33, 33, 0.6);
+  opacity: 0;
+}
+.modal__inner {
+  transition-property: top;
+  transition-duration: 0.2s;
+  transition-delay: 0s;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_wrap.on {
+  transition-property: top;
+  transition-duration: 0.2s;
+  transition-delay: 0s;
+  top: 0;
+}
+.modal_wrap.on::before {
+  transition-property: opacity;
+  transition-duration: 0.3s;
+  transition-delay: 0.2s;
+  opacity: 1;
+}
+.modal_wrap.on .modal__inner {
+  transition-property: top;
+  transition-duration: 0.3s;
+  transition-delay: 0.2s;
+  top: 0;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  margin: 0 12.5%;
+  width: 100%;
+  max-height: 90%;
+  background-color: #fff;
+  overflow: auto;
+}
+.modal > * {
+  flex: 0 0 auto;
+}
+.modal__con {
+  flex: 1 1 auto;
+}
+@media (max-width: 767px) {
+  .modal {
+    margin: 0;
+    height: 100%;
+    max-height: unset;
+    border-radius: 0;
+  }
+}
+.modal__head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-height: 6rem;
+  padding: 1rem 2rem;
+  color: rgba(33, 33, 33, 0.3);
+}
+@media (max-width: 767px) {
+  .modal__head {
+    min-height: 4rem;
+  }
+}
+.modal__head .ttl {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+}
+.modal__head b {
+  color: #212121;
+}
+.modal__head em {
+  margin: 0 0.8rem;
+  color: rgba(33, 33, 33, 0.6);
+}
+.modal__con {
+  overflow-y: auto;
+}
+.modal .main__tab {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.modal .btn_close {
+  flex: 0 0 auto;
+  display: inline-block;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: url("../img/i_xbox.svg") no-repeat;
+  background-size: cover;
+}
+.modal .table__wrap {
+  padding: 2rem;
 }
 
 html {
@@ -831,6 +985,10 @@ body {
   min-height: 7.2rem;
   background: white;
 }
+.main__tab .btn {
+  width: auto;
+  min-width: 9rem;
+}
 .main__tab .text_btn {
   flex: 0 0 auto;
   height: 4rem;
@@ -843,6 +1001,14 @@ body {
   flex: unset;
   width: auto;
   max-width: 100%;
+}
+.main__tab .input_wrap {
+  display: flex;
+  gap: 1.2rem;
+  max-width: 100%;
+}
+.main__tab .input_wrap input {
+  width: 16rem;
 }
 .main__tab .radio {
   color: #212121;
@@ -857,6 +1023,9 @@ body {
   .main__tab .text_btn {
     height: 3rem;
   }
+}
+.main h2 small {
+  color: rgba(33, 33, 33, 0.3);
 }
 @media (max-width: 767px) {
   .main {
@@ -903,6 +1072,12 @@ body {
   align-items: center;
   max-width: 100%;
   background: white;
+}
+.sum_info.fixed {
+  flex: 0 0 auto;
+}
+.sum_info.fixed .sum_info__box {
+  min-width: 16rem;
 }
 .sum_info__box {
   flex: 1 0 auto;
@@ -966,6 +1141,305 @@ body {
 }
 .bank_info .usertype i {
   background-image: url("../img/i_info_w.svg");
+}
+
+/*b2b*/
+.login {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding: 12rem 0;
+}
+.login .form_wrap {
+  margin: 0;
+}
+.login .form_wrap h2 {
+  margin-top: 0;
+}
+@media (max-width: 767px) {
+  .login {
+    flex-direction: column;
+    padding: 4rem 0;
+    align-items: center;
+  }
+}
+
+.demo_intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  width: 28rem;
+  border-radius: 1.6rem;
+  background-color: #F8F8F8;
+  text-align: center;
+}
+.demo_intro__img {
+  margin: 2rem auto;
+  width: 18rem;
+  padding-top: 55.555555%;
+  background: url("../img/img_demo.png") no-repeat;
+  background-size: contain;
+}
+.demo_intro .btn {
+  margin: 2rem auto;
+  width: 16rem;
+  background-color: #F8F8F8;
+  color: #0164FF;
+}
+.demo_intro .btn:hover:hover {
+  background-color: #fdfdfd;
+}
+.demo_intro .btn:hover:active {
+  background-color: white;
+}
+
+.invoice_info__wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.invoice_info dl {
+  display: flex;
+}
+.invoice_info dt {
+  margin-right: 0.8rem;
+  color: rgba(33, 33, 33, 0.3);
+}
+.invoice_info dd {
+  color: rgba(33, 33, 33, 0.6);
+}
+.invoice_info dd .btn.bo {
+  width: auto;
+  background: #F8F8F8;
+}
+.invoice_info dd .btn.bo:hover {
+  background-color: #f3f3f3;
+}
+.invoice_info dd .btn.bo:active {
+  background-color: #ebebeb;
+}
+
+#company_account {
+  padding: 0;
+  min-height: unset;
+  border: 0;
+  background: transparent;
+}
+
+.info_time::before, .info_clip::before {
+  content: "";
+  display: inline-block;
+  margin-right: 0.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+}
+
+.info_clip::before {
+  background-image: url("../img/i_clip.svg");
+}
+
+.info_time::before {
+  background-image: url("../img/i_timepie_filled.svg");
+}
+
+.accordion__class {
+  margin-top: 2rem;
+}
+.accordion__class > * {
+  margin-right: 1.6rem;
+  vertical-align: middle;
+}
+.accordion__chapter {
+  display: flex;
+  gap: 1.6rem;
+  padding: 2rem;
+}
+.accordion__chapter dl {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex: 1;
+}
+.accordion__chapter dl dt, .accordion__chapter dl dd {
+  margin-bottom: 0 !important;
+}
+.accordion__chapter dl dt {
+  flex: 0 0 auto;
+}
+.accordion__chapter dl dd {
+  flex: 1;
+}
+.accordion__chapter button {
+  flex: 0 0 auto;
+  width: 2.4rem;
+  border-radius: 0.4rem;
+  text-align: center;
+}
+.accordion__chapter button:hover {
+  background-color: #fafafa;
+}
+.accordion__chapter button:active {
+  background-color: #f2f2f2;
+}
+.accordion__chapter button::before {
+  content: "↓";
+}
+.accordion__clip {
+  display: none;
+  padding: 1.6rem 2rem;
+}
+.accordion_btn {
+  display: flex;
+  gap: 1.2rem;
+}
+.accordion_btn button:last-child {
+  display: none;
+}
+.accordion ul {
+  margin-top: 2rem;
+  border: 1px solid rgba(33, 33, 33, 0.18);
+}
+.accordion ul li + li {
+  border-top: 1px solid rgba(33, 33, 33, 0.18);
+}
+.accordion dl dt, .accordion dl dd {
+  margin-bottom: 0.4rem;
+}
+.accordion dl dt {
+  color: rgba(33, 33, 33, 0.3);
+}
+.accordion textarea {
+  height: 7.2rem;
+  color: rgba(33, 33, 33, 0.6);
+}
+.accordion .value_change {
+  display: none;
+}
+
+.clip_box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  padding: 1.6rem 0;
+}
+.clip_box:first-child {
+  padding-top: 0 !important;
+}
+.clip_box__con {
+  flex: 1;
+}
+.clip_box__con .empty_data {
+  display: none;
+}
+.clip_box__con .text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.clip_box__con button {
+  width: auto;
+  color: #0164FF;
+  line-height: 2;
+}
+.clip_box__con button::before {
+  content: "전체보기";
+}
+.clip_box__con.on .text {
+  display: block;
+}
+.clip_box__con.on button::before {
+  content: "접어두기";
+}
+.clip_box__video {
+  flex: 0 0 auto;
+  width: 31.2rem;
+  max-width: 100%;
+}
+.clip_box .tag {
+  display: inline-block;
+  margin-left: 0.8rem;
+  padding: 0 0.4rem;
+  background-color: #212121;
+  color: white;
+  line-height: 1.666666;
+}
+.clip_box .keyword {
+  display: inline-block;
+  margin: 0.4rem 0;
+  padding: 0 0.8rem;
+  border: 1px solid rgba(33, 33, 33, 0.18);
+  line-height: 2;
+}
+@media (max-width: 767px) {
+  .clip_box {
+    flex-direction: column;
+  }
+}
+
+.on .accordion__chapter button::before {
+  content: "↑";
+  color: #0164FF;
+}
+.on .accordion__clip {
+  display: block;
+}
+
+.revise_mode .accordion_btn button:first-child {
+  font-size: 0;
+}
+.revise_mode .accordion_btn button:first-child::before {
+  content: "취소";
+}
+.revise_mode .accordion_btn button:last-child {
+  display: block;
+}
+.revise_mode .accordion .value, .revise_mode .accordion .keyword {
+  display: none;
+}
+.revise_mode .accordion .value_change {
+  display: block;
+}
+.revise_mode .accordion .inline {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+.revise_mode .accordion .inline .fill {
+  flex: 1;
+}
+.revise_mode .accordion .inline .hug {
+  flex: 0 0 auto;
+}
+.revise_mode .accordion .inline dt {
+  align-self: flex-start;
+  line-height: 4rem;
+}
+.revise_mode .accordion dl dd {
+  margin-bottom: 1.6rem;
+}
+.revise_mode .clip_box {
+  padding-top: 3.6rem;
+}
+.revise_mode .clip_box + .clip_box {
+  border-top: 1px solid rgba(33, 33, 33, 0.18);
+}
+.revise_mode .clip_box:last-child {
+  padding-bottom: 0;
+}
+.revise_mode .clip_box .empty_data {
+  display: block;
+}
+.revise_mode .clip_box .empty_data.inline {
+  display: flex;
+}
+.revise_mode .clip_box .text {
+  display: none;
 }
 
 /*----------유튜브--------------------------------------------------------------------------------*/
