@@ -799,3 +799,35 @@ body {
     }
   }
 }
+
+.demo_intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40*$unit;
+  width: 280*$unit;
+  border-radius: 16*$unit;
+  background-color: $dark-05;
+  font-size: 17*$unit;
+  font-weight: $bold;
+  text-align: center;
+
+  &__img {
+    margin: 20*$unit auto;
+    width: 180*$unit;
+    padding-top: 55.555555%;
+    background: url("../img/img_demo.png") no-repeat;
+    background-size: contain;
+  }
+
+  .btn {
+    margin: 20*$unit auto;
+    width: 160*$unit;
+    background-color: $dark-05;
+    color: $color-primary;
+
+    &:hover {
+      @include click-btn_bg($dark-05, lighter);
+    }
+  }
+}
