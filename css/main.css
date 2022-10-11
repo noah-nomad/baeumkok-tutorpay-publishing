@@ -211,13 +211,15 @@ fieldset {
 
 i {
   display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 button i {
   margin-left: 0.666666em;
   width: 1.066666em;
   height: 1.066666em;
-  vertical-align: text-top;
+  vertical-align: middle;
 }
 
 .btn.login {
@@ -472,6 +474,12 @@ textarea::placeholder {
 .select:active, .datepicker:active {
   background-color: #f2f2f2;
 }
+.select .i_live, .datepicker .i_live {
+  margin: 0 0.666666em 0 0;
+  width: 2.8rem;
+  height: 1.6rem;
+  background-image: url("../img/i_liveclass_d18.png");
+}
 @media (max-width: 767px) {
   .select, .datepicker {
     padding: 0.8rem 3.2rem 0.8rem 0.8rem;
@@ -617,6 +625,13 @@ textarea::placeholder {
 }
 .table__pagination button.on {
   color: #0164FF;
+}
+.table.live {
+  margin-bottom: 1.2rem;
+}
+.table.live th {
+  background: rgba(0, 214, 214, 0.04);
+  color: #00B8B8;
 }
 .table th {
   padding: 1.2rem;
@@ -1440,6 +1455,38 @@ body {
 }
 .revise_mode .clip_box .text {
   display: none;
+}
+
+.demo_intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  width: 28rem;
+  border-radius: 1.6rem;
+  background-color: #F8F8F8;
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: center;
+}
+.demo_intro__img {
+  margin: 2rem auto;
+  width: 18rem;
+  padding-top: 55.555555%;
+  background: url("../img/img_demo.png") no-repeat;
+  background-size: contain;
+}
+.demo_intro .btn {
+  margin: 2rem auto;
+  width: 16rem;
+  background-color: #F8F8F8;
+  color: #0164FF;
+}
+.demo_intro .btn:hover:hover {
+  background-color: #fdfdfd;
+}
+.demo_intro .btn:hover:active {
+  background-color: white;
 }
 
 /*----------유튜브--------------------------------------------------------------------------------*/

@@ -50,6 +50,8 @@
 
 i {
   display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 button {
@@ -57,7 +59,7 @@ button {
     margin-left: 0.666666em;
     width: 1.066666em;
     height: 1.066666em;
-    vertical-align: text-top;
+    vertical-align: middle;
   }
 }
 
@@ -339,6 +341,13 @@ textarea {
   text-align: left;
   @include click-btn_bg();
 
+  .i_live {
+    margin: 0 0.666666em 0 0;
+    width: 28*$unit;
+    height: 16*$unit;
+    background-image: url("../img/i_liveclass_d18.png");
+  }
+
   @include mobile-area_media {
     padding: 8*$unit 32*$unit 8*$unit 8*$unit;
     background-position: center right 8*$unit;
@@ -491,6 +500,15 @@ textarea {
       &.on {
         color: $color-primary;
       }
+    }
+  }
+
+  &.live {
+    margin-bottom: 12*$unit;
+
+    th {
+      background: rgba($color-promotion, 0.04);
+      color: $color-promotion-dark-10;
     }
   }
 
